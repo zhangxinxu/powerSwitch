@@ -1,0 +1,644 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=7" />
+<meta http-equiv="description" content="万能切换插件powerSwitch测试页面 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端学习实例页面之万能切换插件powerSwitch" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>万能切换插件powerSwitch测试页面 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+<div class="zxx_out_box">
+    <div class="zxx_in_box">
+        <div class="zxx_header">
+            <a href="http://www.zhangxinxu.com/">
+                <img class="l" src="index_logo.gif" />
+            </a>
+            <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-21 15:51</span></span>
+        </div>
+        <h1 class="zxx_title">万能切换插件powerSwitch测试</h1>
+        <div class="tr">
+        	<a href="demo/" class="zxx_demo" title="访问更多精彩实战demo">More Demo</a>
+        	<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_btn ml20" title="GitHub, 你懂的">Fork Me</a>
+        </div>
+        <div class="zxx_main_con">
+        	<div class="zxx_test_list">
+				<h3 class="f11 mb10">一、Tab选项卡</h3>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">1. 普通的选项卡效果</h4>
+                    <ul class="tablist">
+                        <li class="tab"><a href="#tabpanel1" class="tab_a tab_on tabNormal">知名美女1</a></li>
+                        <li class="tab"><a href="#tabpanel2" class="tab_a tabNormal">不知名美女2</a></li>
+                        <li class="tab"><a href="#tabpanel3" class="tab_a tabNormal">美女3</a></li>
+                    </ul>
+                    <ul class="tab_content">
+                        <li id="tabpanel1" class="tabpanel"><img src="img/mm1.jpg" width="256" height="191"><p>知名美女1</p></li>
+                        <li id="tabpanel2" class="tabpanel" style="display:none;"><img src="img/mm2.jpg"><p>不知名美女2</p></li>
+                        <li id="tabpanel3" class="tabpanel" style="display:none;"><img src="img/mm3.jpg"><p>美女3</p></li>
+                    </ul>
+                    <p class="mt10 explain">基本选项卡，点击事件触发，元素主体单纯display显隐，没有动画效果；优点在于高度不需要限死。这里默认显示第二个面板。</p>
+                    <div class="zxx_code"><xmp><!-- <ul class="tablist">
+    <li class="tab"><a href="#tabpanel1" class="tab_a tab_on tabNormal">知名美女1</a></li>
+    <li class="tab"><a href="#tabpanel2" class="tab_a tabNormal">不知名美女2</a></li>
+    <li class="tab"><a href="#tabpanel3" class="tab_a tabNormal">美女3</a></li>
+</ul>
+<ul class="tab_content">
+    <li id="tabpanel1" class="tabpanel"><img src="img/mm1.jpg"><p>知名美女1</p></li>
+    <li id="tabpanel2" class="tabpanel" style="display:none;"><img src="img/mm2.jpg"><p>不知名美女2</p></li>
+    <li id="tabpanel3" class="tabpanel" style="display:none;"><img src="img/mm3.jpg"><p>美女3</p></li>
+</ul> --></xmp></div>
+                    <div class="zxx_code"><xmp>$(".tabNormal").powerSwitch({
+    classAdd: "tab_on"
+}).eq(1).trigger("click");</xmp></div>
+                    
+                </div>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">2. hover触发的选项卡效果</h4>
+                    <ul class="tablist">
+                        <li class="tab"><a href="javascript:" class="tab_a tab_on tabJustHover" data-rel="panelHover1">知名美女1</a></li>
+                        <li class="tab"><a href="javascript:" class="tab_a tabJustHover" data-rel="panelHover2">不知名美女2</a></li>
+                        <li class="tab"><a href="javascript:" class="tab_a tabJustHover" data-rel="panelHover3">美女3</a></li>
+                    </ul>
+                    <ul class="tab_content">
+                        <li id="panelHover1" class="tabpanel"><img src="img/mm1.jpg" width="256" height="191"><p>知名美女1</p></li>
+                        <li id="panelHover2" class="tabpanel" style="display:none;"><img src="img/mm2.jpg"><p>不知名美女1</p></li>
+                        <li id="panelHover3" class="tabpanel" style="display:none;"><img src="img/mm3.jpg"><p>美女3</p></li>
+                    </ul>
+                    <p class="mt10 mb10 explain">鼠标经过事件触发，元素主体单纯display显隐，没有动画效果，回调实现图片的动态加载。主要测试默认的200毫秒hover延时。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ul class="tablist">
+    <li class="tab"><a href="javascript:" class="tab_a tab_on tabJustHover" data-rel="panelHover1">知名美女1</a></li>
+    <li class="tab"><a href="javascript:" class="tab_a tabJustHover" data-rel="panelHover2">不知名美女2</a></li>
+    <li class="tab"><a href="javascript:" class="tab_a tabJustHover" data-rel="panelHover3">美女3</a></li>
+</ul>
+<ul class="tab_content">
+    <li id="panelHover1" class="tabpanel"><img src="img/mm1.jpg" width="256" height="191"><p>知名美女1</p></li>
+    <li id="panelHover2" class="tabpanel" style="display:none;"><img src="img/mm2.jpg"><p>不知名美女1</p></li>
+    <li id="panelHover3" class="tabpanel" style="display:none;"><img src="img/mm3.jpg"><p>美女3</p></li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$(".tabJustHover").powerSwitch({
+    classAdd: "tab_on",
+    eventType: "hover",
+    onSwitch: function(target) {
+        var img = target.find("img").get(0);
+        if (img && !img.src) {
+            img.src = img.getAttribute("data-src");    
+        }
+    }	
+});</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                	<h4 class="f10 mb10">3. 移动动画选项卡</h4>
+                    <ul id="tabTransUl" class="tablist">
+                        <li class="tab"><a href="#panelTrans1" class="tab_a tab_on">为了测试</a></li>
+                        <li class="tab"><a href="#panelTrans2" class="tab_a">拉伸无罪</a></li>
+                        <li class="tab"><a href="#panelTrans3" class="tab_a">你懂的~</a></li>
+                    </ul>
+                    <ul class="tab_content tab_content_rel">
+                    	<li id="panelTrans1" class="tabpanel_abs"><img src="img/mm1.jpg"></li>
+                        <li id="panelTrans2" class="tabpanel_abs" style="display:none;"><img src="img/mm3.jpg"></li>
+                        <li id="panelTrans3" class="tabpanel_abs" style="display:none;"><img src="img/mm4.jpg"></li>
+                    </ul>
+                    <p class="mt10 mb10 explain">水平切换选项卡。父容器需高宽限制；子列表需绝对定位。适应于流体布局及响应布局。<code>translate</code>类型动画。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ul id="tabTransUl" class="tablist">
+    <li class="tab"><a href="#panelTrans1" class="tab_a tab_on">为了测试</a></li>
+    <li class="tab"><a href="#panelTrans2" class="tab_a">拉伸无罪</a></li>
+    <li class="tab"><a href="#panelTrans3" class="tab_a">你懂的~</a></li>
+</ul>
+<ul class="tab_content tab_content_rel">
+    <li id="panelTrans1" class="tabpanel_abs"><img src="img/mm1.jpg"></li>
+    <li id="panelTrans2" class="tabpanel_abs" style="display:none;"><img src="img/mm3.jpg"></li>
+    <li id="panelTrans3" class="tabpanel_abs" style="display:none;"><img src="img/mm4.jpg"></li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#tabTransUl a").powerSwitch({
+    classAdd: "tab_on",
+    animation: "translate"	
+});</xmp>
+					</div>                    
+                </div>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">4. 自动播放</h4>
+                    <div class="tab_limit">
+                    	<div id="tabAutoOperate" class="tab_auto_play"></div>
+                        <ul id="tabAutoTrigger" class="tablist">
+                            <li class="tab"><a href="javascript:" class="tab_a tab_on" data-rel="tabAutoPlay1">美女1</a></li>
+                            <li class="tab"><a href="javascript:" class="tab_a" data-rel="tabAutoPlay2">美女2</a></li>
+                        </ul>
+                        <ul class="tab_content tab_content_rel">
+                            <li id="tabAutoPlay1" class="tabpanel_abs"><img src="img/mm1.jpg"></li>
+                            <li id="tabAutoPlay2" class="tabpanel_abs" style="display:none;"><img src="img/mm3.jpg"></li>
+                        </ul>
+                    </div>
+                    <p class="mt10 mb10 explain">两张图，自动播，可暂停。<code>translate</code>类型动画。还带小翅膀哦！</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <div id="tabAutoOperate" class="tab_auto_play"></div>
+<ul id="tabAutoTrigger" class="tablist">
+    <li class="tab"><a href="javascript:" class="tab_a tab_on" data-rel="tabAutoPlay1">美女1</a></li>
+    <li class="tab"><a href="javascript:" class="tab_a" data-rel="tabAutoPlay2">美女2</a></li>
+</ul>
+<ul class="tab_content tab_content_rel">
+    <li id="tabAutoPlay1" class="tabpanel_abs"><img src="img/mm1.jpg"></li>
+    <li id="tabAutoPlay2" class="tabpanel_abs" style="display:none;"><img src="img/mm3.jpg"></li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#tabAutoTrigger a").powerSwitch({
+    classAdd: "tab_on",
+    animation: "translate",
+    eventType: "hover",
+    autoTime: 3000,
+    container: $("#tabAutoOperate")
+});</xmp>
+					</div>
+                </div>
+            </div>
+            <div class="zxx_test_list">
+				<h3 class="f11 mb10">二、跑马灯切换</h3>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">1. 左右切换，scroll动画</h4>
+                    <div id="caroTriggerOut" class="caro_trigger">
+                    	<a href="javascript:" class="caro_prev" data-rel="caroSwitch1" title="上一张">&laquo;上一张</a>
+                        <a href="javascript:" class="caro_next" data-rel="caroSwitch1" title="下一张">下一张&raquo;</a>
+                    </div>
+                    <div id="caroBox" class="caro_box">
+                    	<ul class="caro_container">
+                        	<li class="caroSwitch1"><img src="img/mm1.jpg" width="256" height="191"></li>
+                            <li class="caroSwitch1"><img src="img/mm2.jpg"></li>
+                            <li class="caroSwitch1"><img src="img/mm3.jpg"></li>
+                        </ul>
+                    </div>
+                    <p class="mt10 mb10 explain">每次切换一个列表，动画使用最父级(定高定宽overflow:hidden的那个元素)的scroll滚动实现。</p>
+                     <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <div id="caroTriggerOut" class="caro_trigger">
+    <a href="javascript:" class="caro_prev" data-rel="caroSwitch1">&laquo;上一张</a>
+    <a href="javascript:" class="caro_next" data-rel="caroSwitch1">下一张&raquo;</a>
+</div>
+<div id="caroBox" class="caro_box">
+    <ul class="caro_container">
+        <li class="caroSwitch1"><img src="img/mm1.jpg" width="256" height="191"></li>
+        <li class="caroSwitch1"><img src="img/mm2.jpg"></li>
+        <li class="caroSwitch1"><img src="img/mm3.jpg"></li>
+    </ul>
+</div> -->              </xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#caroTriggerOut a").powerSwitch({
+    container: $("#caroBox")
+});      				</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                	<h4 class="f10 mb10">2. 左右切换，transform动画</h4>
+                    <div id="caroTriggerOut2" class="caro_trigger caro_trigger2">
+                    	<a href="javascript:" class="caro_prev" data-rel="caroSwitch2">&laquo;上一张</a>
+                        <a href="javascript:" class="caro_next" data-rel="caroSwitch2">下一张&raquo;</a>
+                    </div>
+                    <div class="caro_box caro_box2">
+                    	<ul id="caroBox2" class="caro_container caro_container2">
+                        	<li class="caroSwitch2"><img src="img/mm1.jpg" width="256" height="191"></li>
+                            <li class="caroSwitch2"><img src="img/mm3.jpg"></li>
+                            <li class="caroSwitch2"><img data-src="img/mm4.jpg"></li>
+                        </ul>
+                    </div>
+                    <p class="mt10 mb10 explain">每次切换2个列表，动画应用在列表容器元素(position:absolute的那个)的transform|left/top移动实现。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <div id="caroTriggerOut2" class="caro_trigger caro_trigger2">
+    <a href="javascript:" class="caro_prev" data-rel="caroSwitch2">&laquo;上一张</a>
+    <a href="javascript:" class="caro_next" data-rel="caroSwitch2">下一张&raquo;</a>
+</div>
+<div class="caro_box caro_box2">
+    <ul id="caroBox2" class="caro_container caro_container2">
+        <li class="caroSwitch2"><img src="img/mm1.jpg" width="256" height="191"></li>
+        <li class="caroSwitch2"><img src="img/mm3.jpg"></li>
+        <li class="caroSwitch2"><img data-src="img/mm4.jpg"></li>
+    </ul>
+</div> -->              </xmp>
+					</div>
+                    <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#caroTriggerOut2 a").powerSwitch({
+    container: $("#caroBox2"),
+    number: 2,
+    onSwitch: function(target) {
+        target.each(function() {
+            var img = $(this).find("img").get(0);
+            if (img && !img.src) {
+                img.src = img.getAttribute("data-src");    
+            }
+        });
+    }
+});      				</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                	<h4 class="f10 mb10">3. 上下切换，无动画</h4>
+                    <div id="caroTriggerOut3" class="caro_trigger">
+                    	<a href="javascript:" class="caro_prev" data-rel="caroSwitch3">&laquo;上一张</a>
+                        <a href="javascript:" class="caro_next" data-rel="caroSwitch3">下一张&raquo;</a>
+                    </div>
+                    <div class="caro_box">
+                    	<ul id="caroBox3" class="caro_container caro_container3">
+                        	<li class="caroSwitch3"><img src="img/mm1.jpg" width="256" height="191"></li>
+                            <li class="caroSwitch3"><img data-src="img/mm3.jpg"></li>
+                            <li class="caroSwitch3"><img data-src="img/mm4.jpg"></li>
+                        </ul>
+                    </div>
+                    <p class="mt10 explain">每次切换1个列表元素，无动画效果。目的在于测试<code>animation</code>和<code>direction</code>这两个参数</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                        <xmp><!-- <div id="caroTriggerOut3" class="caro_trigger">
+    <a href="javascript:" class="caro_prev" data-rel="caroSwitch3">&laquo;上一张</a>
+    <a href="javascript:" class="caro_next" data-rel="caroSwitch3">下一张&raquo;</a>
+</div>
+<div class="caro_box">
+    <ul id="caroBox3" class="caro_container caro_container3">
+        <li class="caroSwitch3"><img src="img/mm1.jpg" width="256" height="191"></li>
+        <li class="caroSwitch3"><img data-src="img/mm3.jpg"></li>
+        <li class="caroSwitch3"><img data-src="img/mm4.jpg"></li>
+    </ul>
+</div> --></xmp></div>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">JS代码：</h6>
+                    	<pre>$("#caroTriggerOut3 a").powerSwitch({
+    container: $("#caroBox3"),
+    animation: "none",
+    direction: "vertical",
+    onSwitch: function(target) {
+        target.each(function() {
+            var img = $(this).find("img").get(0);
+            if (img && !img.src) {
+                img.src = img.getAttribute("data-src");    
+            }
+        });
+    }
+});</pre></div>
+                </div>
+            </div>
+            <div class="zxx_test_list">
+				<h3 class="f11 mb10">三、手风琴效果</h3>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">1. 比较纯正的手风琴效果</h4>
+                    <ul class="hand_toggle">
+                    	<li class="hand_list">
+                        	<a href="#;" class="hand_title handTitle" data-rel="handContent1">手风琴效果</a>
+                            <div id="handContent1" class="hand_content">典型的手风琴效果的UI就是当前这个效果。</div>
+                        </li>
+                        <li class="hand_list">
+                        	<a href="#;" class="hand_title handTitle" data-rel="handContent2">有一些变体</a>
+                            <div id="handContent2" class="hand_content" style="display:none;">手风琴效果还有一些变体。模样虽不像，本质一致。</div>
+                        </li>
+                        <li class="hand_list">
+                        	<a href="#;" class="hand_title handTitle" data-rel="handContent3">甚至这个</a>
+                            <div id="handContent3" class="hand_content" style="display:none;">更多展开与收起效果也算，因此，会在下面展示。</div>
+                        </li>
+                    </ul>
+                    <p class="mt10 mb10 explain">slide动画效果下的手风琴效果。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ul class="hand_toggle">
+    <li class="hand_list">
+        <a href="#;" class="hand_title handTitle" data-rel="handContent1">手风琴效果</a>
+        <div id="handContent1" class="hand_content">典型的手风琴效果的UI就是当前这个效果。</div>
+    </li>
+    <li class="hand_list">
+        <a href="#;" class="hand_title handTitle" data-rel="handContent2">有一些变体</a>
+        <div id="handContent2" class="hand_content" style="display:none;">手风琴效果还有一些变体。模样虽不像，本质一致。</div>
+    </li>
+    <li class="hand_list">
+        <a href="#;" class="hand_title handTitle" data-rel="handContent3">甚至这个</a>
+        <div id="handContent3" class="hand_content" style="display:none;">更多展开与收起效果也算，因此，会在下面展示。</div>
+    </li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$(".handTitle").powerSwitch({
+    animation: "slide"
+});</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">2. 可伸缩的垂直导航效果</h4>
+                    <div id="navvBar" class="navv_bar">
+                    	<h4 class="navv_title" title="收起" data-rel="navvUl1">订单中心<span class="navv_cor">▼</span></h4>
+                        <ul id="navvUl1" class="navv_ul">
+                        	<li>我的订单</li>
+                            <li>我的团购</li>
+                            <li>我的关注</li>
+                        </ul>
+                        <h4 class="navv_title" title="收起" data-rel="navvUl2">客户服务<span class="navv_cor">▼</span></h4>
+                        <ul id="navvUl2" class="navv_ul">
+                        	<li>返修/退换货</li>
+                            <li>取消订单记录</li>
+                            <li>我的投诉</li>
+                        </ul>
+                        <h4 class="navv_title" title="收起" data-rel="navvUl3">账户中心<span class="navv_cor">▼</span></h4>
+                        <ul id="navvUl3" class="navv_ul">
+                        	<li>账户信息</li>
+                            <li>账户安全</li>
+                            <li>消费记录</li>
+                            <li>我的积分</li>
+                        </ul>
+                    </div>
+                    <p class="mt10 mb10 explain">能伸能缩的垂直导航。状态差异回调控制。单纯显隐。主要测试toggle.</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <div id="navvBar" class="navv_bar">
+    <h4 class="navv_title" title="收起" data-rel="navvUl1">订单中心<span class="navv_cor">▼</span></h4>
+    <ul id="navvUl1" class="navv_ul">
+        <li>我的订单</li>
+        <li>我的团购</li>
+        <li>我的关注</li>
+    </ul>
+    <h4 class="navv_title" title="收起" data-rel="navvUl2">客户服务<span class="navv_cor">▼</span></h4>
+    <ul id="navvUl2" class="navv_ul">
+        <li>返修/退换货</li>
+        <li>取消订单记录</li>
+        <li>我的投诉</li>
+    </ul>
+    <h4 class="navv_title" title="收起" data-rel="navvUl3">账户中心<span class="navv_cor">▼</span></h4>
+    <ul id="navvUl3" class="navv_ul">
+        <li>账户信息</li>
+        <li>账户安全</li>
+        <li>消费记录</li>
+        <li>我的积分</li>
+    </ul>
+</div> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#navvBar h4").powerSwitch({
+    toggle: true,
+    onSwitch: function(target, display) {
+        // 三角变化
+        $(this).find("span").html(display? "▼": "▶");
+    }
+});</xmp>
+					</div>
+                </div>
+            </div>
+            <div class="zxx_test_list">
+				<h3 class="f11 mb10">四、其他特殊变体</h3>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">1. 更多展开与收起</h4>
+                    <div class="more_toggle">
+                        <p>自从日本开发出只有女性才能操纵的飞行超兵器“IS”（即“斯特拉托斯”之后，世界发生了翻天覆地的变化，女性的地位被提升到优先准位。<span class="aniMoreToggle dn">培育IS操纵者的学校“IS学院”每年接纳来自世界各地的优秀候补生少女。然而，主人公织斑一夏虽然是个男生却不知 因为什么原因能够启动IS，因此他被强制送入了IS学院就读。织斑一夏从此成为女校中的万红丛中一点绿，从他青梅竹马的剑道少女帚开始，不同国籍不同性格</span> ... ...</p>
+                        <p class="tr"><a href="javascript:" id="moreToggle" data-rel="aniMoreToggle" data-toggle="收起更多↑">展开更多↓</a></p>
+                    </div>
+                    <p class="mt10 mb10 explain">更多展开与收起，耳熟能详，不多说，上代码~</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <p>自从日本开发出只有女性才能操纵的飞行超兵器“IS”（即“斯特拉托斯”之后，世界发生了翻天覆地的变化，女性的地位被提升到优先准位。<span class="aniMoreToggle dn">培育IS操纵者的学校“IS学院”每年接纳来自世界各地的优秀候补生少女。然而，主人公织斑一夏虽然是个男生却不知 因为什么原因能够启动IS，因此他被强制送入了IS学院就读。织斑一夏从此成为女校中的万红丛中一点绿，从他青梅竹马的剑道少女帚开始，不同国籍不同性格</span> ... ...</p>
+<p class="tr"><a href="javascript:" id="moreToggle" data-rel="aniMoreToggle" data-toggle="收起更多↑">展开更多↓</a></p> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>var initHtmlMore = $("#moreToggle").powerSwitch({
+    toggle: true,
+    onSwitch: function(target, display) {
+        // 提示文字变化
+        if (display == false) {
+            $(this).html(initHtmlMore);
+        } else {
+            $(this).html($(this).attr("data-toggle"));
+        }        
+    }
+}).html();</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">2. 文字广告播啊播</h4>
+                    <ul id="wordSlide" class="word_slide" data-rel="#wordSlide li">
+                        <li id="wordList1" style="display: list-item;" data-rel="wordList1"><a href="##">媒体解析三中全会焦点 关注户改收入分配等</a></li>
+                        <li id="wordList2" data-rel="wordList2"><a href="##">全会纲领性文件如何出台</a> <a href="##">图解各届全会研究内容</a></li>
+                        <li id="wordList3" data-rel="wordList3"><a href="##">国台办:“台独”图谋搞乱香港绝不可能得逞</a></li>
+                        <li id="wordList4" data-rel="wordList4"><a href="##">中央将遴选100名具冲击诺贝尔奖潜力人才</a></li>
+                        <li id="wordList5" data-rel="wordList5"><a href="##">国信办主任鲁炜：网聚正能量 共筑中国梦</a> <a href="##">专题</a></li>
+                        <li id="wordList6" data-rel="wordList6"><a href="##">要求主流新闻网站要做到八个带头</a> <a href="##">提出六个目标</a></li>
+                    </ul>
+                    <p class="mt10 mb10 explain">关键点：指向自身。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ul id="wordSlide" class="word_slide" data-rel="#wordSlide li">
+    <li id="wordList1" style="display: list-item;" data-rel="wordList1"><a href="##">媒体解析三中全会焦点 关注户改收入分配等</a></li>
+    <li id="wordList2" data-rel="wordList2"><a href="##">全会纲领性文件如何出台</a> <a href="##">图解各届全会研究内容</a></li>
+    <li id="wordList3" data-rel="wordList3"><a href="##">国台办:“台独”图谋搞乱香港绝不可能得逞</a></li>
+    <li id="wordList4" data-rel="wordList4"><a href="##">中央将遴选100名具冲击诺贝尔奖潜力人才</a></li>
+    <li id="wordList5" data-rel="wordList5"><a href="##">国信办主任鲁炜：网聚正能量 共筑中国梦</a> <a href="##">专题</a></li>
+    <li id="wordList6" data-rel="wordList6"><a href="##">要求主流新闻网站要做到八个带头</a> <a href="##">提出六个目标</a></li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#wordSlide li").powerSwitch({
+    autoTime: 3000,
+    direction: "vertical",
+    animation: "translate"
+});</xmp>
+					</div>
+                </div>
+                <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">3. 每次显示2条</h4>
+                    <ul id="moreComment" class="more_comment">
+                    	<li class="mt10">
+                        	<img src="img/u1809722-16.jpg" class="l">
+                            <div class="more_detail">从演员说起： 安吉拉宝贝作为麻杆届的优秀代表，在唐人以丰腴为美的审美观里，连珠圆玉润尚做不到，不知道她是怎么混上花魁的，（喂，你是给评委塞钱了吧。）在片中，她要做的只有两件事，一是如蛇精一般不断扭曲腰身，二是扮楚楚可怜状。在成为花魁之后，她体内文艺细菌蠢蠢作祟，毅然决然地拒绝了金钱和权力的腐蚀，决定把自己的初夜献给大湿人元公子。正当豆瓣文艺屌.........</div>
+                        </li>
+                        <li>
+                        	<img src="img/u1009172-8.jpg" class="l">
+                            <div class="more_detail">故事的开头是这样的，大唐的水军出征去打击敌对势力，但是刚进伟大航路的时候，海中突然出现了一个怪兽样神秘物体，战斗力奇强，几下就把水军打散了。 怪兽的出现让不明真相的围观群众三观尽毁，开始背离社会主义精神文明道路，迷信起腐朽的资本主义文化来。 皇上很生气，指示公安尽快破案，捉拿怪兽。 狄仁杰在大街上碰到了anglebaby饰演的女优。这个女优是个日本.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u1128221-54.jpg" class="l">
+                            <div class="more_detail">讨论《狄仁杰之神都龙王》之前，有一点特别值得注意，它与《狄仁杰之通天帝国》组成了一个全新的电影系列。字幕结尾处，大量人物场景概念图的出现更加佐证了这一点（它被称为第四个彩蛋，也是最长的彩蛋）。冲那庞大架势，已经不是跟观众调皮示好“我要拍个续集”那么简单，这几乎意味着它是一个重磅系列。 光是古装武侠片领域，徐克制作过多个电影系列，像声名鹊起的《.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u3309706-51.jpg" class="l">
+                            <div class="more_detail">先提提几个造型。 安鸡拉出场比较称职，白冠子红珊瑚串配红白软纱，敦煌妙相，庄重里带娇俏，妆容衣冠都没有不妥，身形太幼小，顶不起来，不过换个高大健硕的，可能又会把衣裳饰品给盖下去，她做为模特，有模特的职业操守，烘托造型是第一要务，反而有了优势。一样的形象，换盛年王祖贤扮上，绝对欲仙欲死，可估计到时候小娘子拿的是花篮还是琵琶都没人记得住了，真要找.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u40084067-14.jpg" class="l">
+                            <div class="more_detail">当故事开始,一片完全不符合动力学原理的方头战船迎面而来的时候,俺仿佛梦回龙门飞甲,只是这次站站船上的不是厂花雨化田。 久违了,徐克的3D。 应该说神都龙王在技术上比龙门飞甲有所进步，特别是景深，但比例变形的问题似乎随之变得更加严重了，全片第一次出现神都洛阳的全景，酷似迷你街道模型，而且以后所有的大场景都存在这个问题。 外行谈技术，只能说直观.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u51965431-3.jpg" class="l">
+                            <div class="more_detail">去看了徐克的新作《狄仁杰之神都龙王》，见到了老爷本人，很高兴。 作为10年刘德华、李冰冰主演的那部《狄仁杰之通天帝国》的前传，这两部电影的内容联系不大，唯一明确的联系是狄仁杰那把“用这柄锏与对手的兵器向碰，便能听出裂隙，击之必断”的亢龙锏。徐克电影的编剧方面常是软肋，天马行空的亮点不少，但是剧本的整体性和合理性一向欠缺。近年来，老爷的剧本.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u63084245-3.jpg" class="l">
+                            <div class="more_detail">首先就是，能不能不要再在关于唐代的影视文艺作品中广泛使用“公子”“小姐”了…… “郎君”和“娘子”才对味儿嘛！ 然后就是一个我不太能理解的事情…我虽然知道认真我就输了但是…这片的背景，是在唐东都洛阳对吧？洛阳就是河南那个洛阳对吧……？然后它不是不临海么，我看了一下就算顺河道东出至海也不近呢，是我没看明白还是怎么着，男主和他的小伙伴们第一次正面遇上.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u46881821-1.jpg" class="l">
+                            <div class="more_detail">刚从影院出来，从来不写影评，但是这部片子让我浪费了100多的票价，实在忍不住，怒上豆瓣开喷！ 因为没有写这类东西的经验，也就不分什么部分之类的了，从头到尾回忆一遍，想到哪写到哪，随便看看，轻喷。 电影一开始是水军遇到那只鳖皇（后来看得出来应该是一只比较腻害的蝠鲼，或者古氏鱼，不懂，反正不是鳖！），基本死光了，IMAX效果挺好，不过鳖皇轻而易举的干翻.........</div>
+                        </li>
+                        <li class="dn">
+                        	<img src="img/u39523731-35.jpg" class="l">
+                            <div class="more_detail">狄仁杰之乱七八糟 《狄仁杰之神都龙王》槽点太多，无从吐起，想到哪吐到哪吧。 你在海里设计个大怪物是要闹哪样？攻打洛阳城吗，但是洛阳城在岸上啊，你这大怪物有登陆作战能力吗，有就展示一个，没有你在海里搅得天翻地覆有什么用？ 或者你要说水陆双线作战，大怪物专门负责攻击船队，但是你庞大的地上部队呢？没有啊，只有蝙蝠洞里的一群蝙蝠。 哦，对了，.........</div>
+                        </li>
+                        <li><a href="javascript:" id="moreCommentBtn" class="more_comment_btn" data-rel="#moreComment .dn">显示更多 ↓</a></li>
+                    </ul>
+                    <p class="mt10 mb10 explain">特定列表数目的展开更多。亮点：<code>data-rel</code>值为一个复杂选择器。</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ul id="moreComment" class="more_comment">
+    <li class="mt10">
+        <img src="img/u1809722-16.jpg" class="l">
+        <div class="more_detail">........</div>
+    </li>
+    <li>
+        <img src="img/u1009172-8.jpg" class="l">
+        <div class="more_detail">........</div>
+    </li>
+    <li class="dn">
+        <img src="img/u1128221-54.jpg" class="l">
+        <div class="more_detail">........</div>
+    </li>
+    .
+    .
+    .
+    <li class="dn">
+        <img src="img/u39523731-35.jpg" class="l">
+        <div class="more_detail">........</div>
+    </li>
+    <li><a href="javascript:" id="moreCommentBtn" class="more_comment_btn" data-rel="#moreComment .dn">显示更多 ↓</a></li>
+</ul> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>$("#moreCommentBtn").powerSwitch({
+    number: 2
+});</xmp>
+					</div>
+                </div>
+                <div class="zxx_remind">上面测试的例子，结构简单？界面丑陋？略显无聊？那你可以试试<a href="demo/" title="精彩实例">点击这里</a>！</div>
+            </div>
+        </div>
+        <div class="zxx_footer">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </div>
+    </div>
+</div>
+<script src="jquery.min.js?v=1.4.4"></script>
+<script src="jquery-powerSwitch.js"></script>
+<script>
+$(".tabNormal").powerSwitch({
+	classAdd: "tab_on"
+});
+$(".tabJustHover").powerSwitch({
+	classAdd: "tab_on",
+	eventType: "hover",
+	onSwitch: function(target) {
+		var img = target.find("img").get(0);
+		if (img && !img.src) {
+			img.src = img.getAttribute("data-src");	
+		}
+	}	
+});
+$("#tabTransUl a").powerSwitch({
+	classAdd: "tab_on",
+	animation: "translate"	
+});
+$("#tabAutoTrigger a").powerSwitch({
+	classAdd: "tab_on",
+	animation: "translate",
+	eventType: "hover",
+	autoTime: 3000,
+	container: $("#tabAutoOperate")
+});
+$("#caroTriggerOut a").powerSwitch({
+	container: $("#caroBox"),
+	onSwitch: function(target) {
+		target.each(function() {
+			var img = $(this).find("img").get(0);
+			if (img && !img.src) {
+				img.src = img.getAttribute("data-src");	
+			}
+		});
+	}
+});
+$("#caroTriggerOut2 a").powerSwitch({
+	container: $("#caroBox2"),
+	number: 2,
+	onSwitch: function(target) {
+		target.each(function() {
+			var img = $(this).find("img").get(0);
+			if (img && !img.src) {
+				img.src = img.getAttribute("data-src");	
+			}
+		});
+	}
+});
+$("#caroTriggerOut3 a").powerSwitch({
+	container: $("#caroBox3"),
+	animation: "none",
+	direction: "vertical",
+	onSwitch: function(target) {
+		target.each(function() {
+			var img = $(this).find("img").get(0);
+			if (img && !img.src) {
+				img.src = img.getAttribute("data-src");	
+			}
+		});
+	}
+});
+
+$(".handTitle").powerSwitch({
+	animation: "slide"
+});
+
+$("#navvBar h4").powerSwitch({
+	toggle: true,
+	onSwitch: function(target, display) {
+		// 三角变化
+		$(this).find("span").html(display? "▼": "▶");
+	}
+});
+
+var initHtmlMore = $("#moreToggle").powerSwitch({
+	toggle: true,
+	onSwitch: function(target, display) {
+		// 提示文字变化
+		if (display == false) {
+			$(this).html(initHtmlMore);
+		} else {
+			$(this).html($(this).attr("data-toggle"));
+		}		
+	}
+}).html();
+
+$("#wordSlide li").powerSwitch({
+	autoTime: 3000,
+	direction: "vertical",
+	animation: "translate"
+});
+
+$("#moreCommentBtn").powerSwitch({
+	number: 2
+});
+</script>
+</body>
+</html>
