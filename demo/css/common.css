@@ -1,0 +1,32 @@
+/* some reset*/
+body { line-height: 1.4; background-color: #cad5eb; font-size: 12px; color: #333; font-family: Arial, sans-serif; }
+body, ul, ol, p { margin: 0;}
+ul, ol { padding-left: 0; list-style-type: none; }
+a { color: #34538b; text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { border: 0; }
+
+/* constructor */
+.zxx_constr { width: 980px; margin-left: auto; margin-right: auto; }
+.zxx_header { height: 70px; background-color: #fff; }
+.zxx_logo { position: absolute; margin-top: 14px; }
+.zxx_author_time { float: right; margin-top: 40px; color: #999; font-family: tahoma; }
+.zxx_api { width: 40px; height: 40px; overflow: hidden; position: absolute; right: 0 ; top: 0; color: #fff; }
+.zxx_api::before { content: ''; width: 80px; height: 80px; border-radius: 80px; background-color: #34538b; position:absolute; right: -40px; top: -40px;}
+.zxx_api::after { content: 'API'; position: absolute; top: 5px; left: 14px; color: #fff; font-size: 15px; font-family: tahoma; }
+.zxx_api:hover::before { background-color: #cd0000; }
+.zxx_nav { border-top: 4px solid #a0b3d6; background-color: #beceeb; }
+.zxx_nav_ul { width: 100%; overflow: hidden; font-size: 14px; font-weight: bold; }
+.zxx_nav_li { float: left;}
+.zxx_nav_a { display: block; padding: 10px 25px; color: #333; text-shadow: 1px 1px #eee; text-decoration: none; }
+.zxx_nav_on { background-color: #fff; box-shadow: inset 1px 1px #ccc; }
+.zxx_nav_sp { float: right; margin-top: 5px; font-size: 12px; white-space: nowrap; }
+.zxx_rbtn{display:inline-block; padding:5px 20px; background-color: #cd0000; color: #fff; font-weight:bold; text-decoration: none;}
+.zxx_gbtn{display:inline-block; padding:5px 25px; background-color: green; color: #fff; font-weight:bold; text-decoration: none;}
+.zxx_rbtn:hover, .zxx_gbtn:hover{text-decoration:none; color:#fff;}
+.zxx_btn:active, .zxx_gbtn:active{box-shadow:inset 0 2px 3px rgba(0,0,0,.35); padding-top:6px; padding-bottom:4px;}
+
+.zxx_footer { border-top: 5px solid #a0b3d6; }
+.zxx_copyright { padding-top: 20px; padding-bottom: 20px; text-align: center; text-shadow: 1px 1px #ddd; }
+.zxx_copyright a { margin-right: 3px; margin-left: 3px; }
+.zxx_body { min-height: 800px; _height: 800px; border: 1px solid; border-color: #fff #f0f3f9 #cad5eb; background-color: #fff; }
