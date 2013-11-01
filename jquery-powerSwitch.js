@@ -53,40 +53,43 @@
 
 			return $(arrTarget);			
 		},
+		transition: function(target, duration, isReset) {
+			var transform = "transform " + duration + "ms linear";
+			if (isAnimation == false) return;
+			// CSS3 transition设置
+			if (isReset == true) {
+				target.css("webkitTransition", "none").css("transition", "none");
+				target.data("hasTransition", false);
+			} else if (!target.data("hasTransition")) {
+				target.css("webkitTransition", "-webkit-" + transform).css("transition", transform);
+				target.data("hasTransition", true);
+			}
+		},
+		translate: function(target, key, value) {
+			// 偏移值设置
+			var valueTransform = "translate"+ key +"("+ value +")";
+			isAnimation? 
+			target.css("webkitTransform", valueTransform).css("transform", valueTransform):
+			target.css(key == "X"? { left: value }: { top: value });
+		},
 		animation: function(targetHide, targetShow, params) {
-			var container = null;
+			var container = null, that = this, noAnimate = params.animation == "none";
 			
 			// 动画相关的几个小方法
-			var funTransition = function(target, isReset) {
-				var transform = "transform " + params.duration + "ms linear";
-				if (isAnimation == false) return;
-				// CSS3 transition设置
-				if (isReset == true) {
-					target.css("webkitTransition", "none").css("transition", "none");
-					target.data("hasTransition", false);
-				} else if (!target.data("hasTransition")) {
-					target.css("webkitTransition", "-webkit-" + transform).css("transition", transform);
-					target.data("hasTransition", true);
-				}
-			}, funTranslate = function(target, key, value) {
-				// 偏移值设置
-				var valueTransform = "translate"+ key +"("+ value +")";
-				isAnimation? 
-				target.css("webkitTransform", valueTransform).css("transform", valueTransform):
-				target.css(key == "X"? { left: value }: { top: value });
-			}, funTransform = function(target, key, value) {
+			var funTransform = function(target, key, value) {
 				// 如果value是纯数值
 				if (parseInt(value) === value) value += "px";
 				// IE10+等现代浏览器
 				if (isAnimation) {
 					// CSS3驱动动画					
-					funTransition(target);
+					that.transition(target, params.duration, noAnimate);
 					// 动画触发等
-					funTranslate(target, key, value);
+					that.translate(target, key, value);
+					console.log(value);
 				} else {
 					// IE6-IE9这些老弱病残
 					// left/top
-					target.animate(key == "X"? {
+					target[noAnimate? "css": "animate"](key == "X"? {
 						left: value
 					}: {
 						top: value	
@@ -135,12 +138,11 @@
 							// 清除可能的transition
 							// 因为动画的需要元素要改一下起始位置
 							// 由于之前CSS3 transition的设置，这种位置变化会有动画效果，而我们需要的是瞬间移动（用户看不到的那种）
-							funTransition(targetShow.show(), true);
+							that.transition(targetShow.show(), params.duration, true);
 							// 要显示的元素乾坤大挪移到我们希望的位置
-							funTranslate(targetShow, objDirection[params.direction], hundred + "%");
+							that.translate(targetShow, objDirection[params.direction], hundred + "%");
 							// 动画触发了，一个移走，一个移入
 							setTimeout(function() {
-								// console.log(targetShow.css("left"));
 								funTransform(targetHide, objDirection[params.direction], -1 * hundred + "%");
 								funTransform(targetShow, objDirection[params.direction], "0%");	
 							}, 17);
@@ -160,11 +162,13 @@
 						break;
 					}
 					case  "fade": {
+						// 淡入淡出效果
 						if (targetHide) targetHide.fadeOut(params.duration);
 						if (targetShow) targetShow.fadeIn(params.duration);	
 						break;
 					}
 					case  "visibility": {
+						// visibility隐藏与显示
 						if (targetHide) targetHide.css("visibility", "hidden");
 						if (targetShow) targetShow.css("visibility", "visible");
 						break;
@@ -191,9 +195,7 @@
 							params.container.scrollTop(position.top);
 					} else {
 						// transform模式
-						params.animation == "auto"? 
-							funTransform(params.container, "Y", -1 * position.top):
-							params.container.css("top", -1 * position.top);
+						funTransform(params.container, "Y", -1 * position.top)
 					}
 				} else {
 					// 水平方向							
@@ -204,9 +206,7 @@
 							params.container.scrollLeft(position.left);
 					} else {
 						// transform模式
-						params.animation == "auto"? 
-							funTransform(params.container, "X", -1 * position.left):
-							params.container.css("left", -1 * position.left);
+						funTransform(params.container, "X", -1 * position.left)
 					}
 				}
 			}			
@@ -234,11 +234,12 @@
 		// 最终参数
 		var params = $.extend({}, defaults, options || {});
 		
-		// 一些全局类名
-		
-		$.each(["disabled", "previous", "play", "pause", "next"], function(index, key) {
-			var paramsKey = "class" + key.slice(0, 1).toUpperCase() + key.slice(1);			
-			params[paramsKey] = params[paramsKey] || (params.classPrefix? [params.classPrefix, key].join("_"): key);
+		// 一些全局类名		
+		$.each(["disabled", "prev", "play", "pause", "next"], function(index, key) {
+			var paramsKey = "class" + key.slice(0, 1).toUpperCase() + key.slice(1);
+			if (params[paramsKey] === undefined) {
+				params[paramsKey] = params.classPrefix? [params.classPrefix, key].join("_"): key;
+			}
 		});
 		
 		
@@ -313,14 +314,24 @@
 		// 判断是否是多对一的关系
 		if (self.eq(0).data("isMoreToOne") == true) {
 			isMoreToOne = true;
-			elePrev = self.eq(0), eleNext = self.eq(1);
-			elePrev.data("title", elePrev.attr("title"));
-			eleNext.data("title", eleNext.attr("title"));
-			// 初始按钮的状态			
-			funStatePrevNext(indexSelected);
-			// 滚动位置
-			if (indexSelected <= 0) {
-				$(params.container).scrollLeft(0).scrollTop(0);
+			
+			// 如果不是无限滚动
+			if (params.classDisabled) {
+				elePrev = self.eq(0), eleNext = self.eq(1);
+				elePrev.data("title", elePrev.attr("title"));
+				eleNext.data("title", eleNext.attr("title"));
+				// 初始按钮的状态			
+				funStatePrevNext(indexSelected);
+				// 滚动位置
+				if (indexSelected <= 0) {
+					$(params.container).scrollLeft(0).scrollTop(0);
+				}
+			} else {
+				// 无限滚动
+				// 克隆并载入				
+				eleRelatives.clone().insertAfter(eleRelatives.eq(lenRelatives - 1));
+				// 重新确定关联元素们
+				eleRelatives = $.powerSwitch.getRelative(self, params);
 			}
 		}
 		// 判断是否1对多
@@ -329,7 +340,9 @@
 			isOneToMore = true;
 		}
 		
-
+		
+		// 切换的核心，所有的切换都要走这一步
+		// 面向切换面板元素设计的切换方法
 		var funSwitchable = function(indexWill) {
 			// 总的切换项目数，每次切换的项目数
 			var eleWillRelative = eleRelatives.slice(indexWill, indexWill + numSwitch);			
@@ -349,7 +362,7 @@
 					// 容器动画
 					$.powerSwitch.animation(null, null, params);					
 					// 按钮状态					
-					funStatePrevNext(indexWill);
+					params.classDisabled && funStatePrevNext(indexWill);
 					
 					// 回调
 					params.onSwitch.call(this, eleWillRelative);
@@ -409,8 +422,9 @@
 			
 			if (isMoreToOne == true) {				
 				$(element).bind("click", function() {
-					var indexWill;
-					if (!$(this).attr("disabled")) {
+					var indexWill, eleWill, eleRelativesAll = $();
+					if (params.classDisabled) {
+						if ($(this).attr("disabled")) return false;
 						if (index == 0) {
 							indexWill = indexSelected - numSwitch;
 							indexWill = Math.max(0, indexWill);
@@ -418,7 +432,32 @@
 							indexWill = indexSelected + numSwitch;
 							indexWill = Math.min(indexWill, lenRelatives - 1);
 						}
-						funSwitchable.call(this, indexWill);							
+						funSwitchable.call(this, indexWill);	
+					} else if (lenRelatives > numSwitch) {
+						// 重新获得相关面板
+						// 无限滚动
+						if (index == 0) {
+							indexWill = indexSelected - numSwitch;
+							if (indexWill < 0) {
+								// 瞬间无感重定位
+								eleWill = eleRelatives.eq(indexSelected + lenRelatives);
+								$(params.container).data("position", eleWill.position());
+								$.powerSwitch.animation(null, null, $.extend({}, params, { animation: "none" }));
+								indexWill = indexSelected + lenRelatives - numSwitch;								
+							}								
+						} else if (index == 1) {
+							indexWill = indexSelected + numSwitch;
+							//console.log(indexWill);
+							if (indexWill > lenRelatives * 2 - numSwitch) {
+								// 末位数量不够了
+								eleWill = eleRelatives.eq(indexSelected - lenRelatives);
+								$(params.container).data("position", eleWill.position());
+								$.powerSwitch.animation(null, null, $.extend({}, params, { animation: "none" }));
+								// 新的索引位置
+								indexWill = indexSelected - lenRelatives + numSwitch;
+							}
+						}
+						funSwitchable.call(this, indexWill);						
 					}
 					return false;
 				});
@@ -494,24 +533,21 @@
 		};
 		
 		
-		if (params.autoTime && params.toggle == false) {			
+		if (isMoreToOne == false && isOneToMore == false && params.toggle == false) {			
 			// 创建前进、后退、以及暂停按钮
 			if (params.container) {
 				var htmlTempOperate = '';
-				self.length && $.each(["Previous", "Pause", "Next"], function(index, key) {
+				self.length && $.each(["Prev", "Pause", "Next"], function(index, key) {
+					if (params.autoTime == 0 && key == "Pause") return;
 					// 自动播放模式时候需要
 					htmlTempOperate = htmlTempOperate + '<a href="javascript:" class="'+ params["class" + key] +'" data-type="'+ key.toLowerCase() +'"></a>';	
 				});
 				
-				params.container.append(htmlTempOperate).hover(function() {
-					clearTimeout(autoPlayTimer);	
-				}, function() {
-					funAutoPlay();	
-				}).delegate("a", "click", function() {
+				params.container.append(htmlTempOperate).delegate("a", "click", function() {
 					var type = $(this).attr("data-type"), classType = params["class" + type.slice(0, 1).toUpperCase() + type.slice(1)],
 						indexWill = indexSelected;
 					switch (type) {
-						case "previous": {
+						case "prev": {
 							funPlayPrev();
 							break	
 						}
@@ -533,27 +569,28 @@
 						}
 					}
 				});	
+				
+				if (params.autoTime) {
+					// 定时播放相关事件绑定
+					params.container.hover(function() {
+						clearTimeout(autoPlayTimer);	
+					}, function() {
+						funAutoPlay();	
+					});
+				}
 			}
 			
-			// 选项卡，以及切换面板鼠标经过停止自动播放
-			self.each(function(index, element) {
-				var relative = $.powerSwitch.getRelative(element, params);
-                $(element).hover(function() {
-					clearTimeout(autoPlayTimer);	
+			if (params.autoTime) {			
+				// 选项卡，以及切换面板鼠标经过停止自动播放				
+				$(self, eleRelatives).hover(function() {
+					clearTimeout(autoPlayTimer);
 				}, function() {
 					funAutoPlay();
 				});
-				relative.hover(function() {
-					clearTimeout(autoPlayTimer);	
-				}, function() {
-					funAutoPlay();
-				});
-            });
-			
-			
-			
-			funAutoPlay.flagAutoPlay = true;
-			funAutoPlay();
+				
+				funAutoPlay.flagAutoPlay = true;
+				funAutoPlay();
+			}
 		}
 		
 		return self;

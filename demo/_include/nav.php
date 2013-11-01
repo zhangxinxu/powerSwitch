@@ -1,3 +1,13 @@
+<?php
+	$arrNav = array('首页', '迅雷动漫', '淘宝网', '京东商城', '易迅网');
+	$arrClass = array('', '', '', '', '');
+	
+	foreach($arrNav as $index => $value) {
+		if ($key == $value) {
+			$arrClass[$index] = ' zxx_nav_on';	
+		}
+	}
+?>
 
 <div class="zxx_header">
     <div class="zxx_constr">
@@ -12,11 +22,11 @@
 <div class="zxx_nav">
 	<div class="zxx_constr">
     	<ul class="zxx_nav_ul">
-        	<li class="zxx_nav_li"><a href="index.php" class="zxx_nav_a zxx_nav_on">首页</a></li>
-            <li class="zxx_nav_li"><a href="xunlei.php" class="zxx_nav_a">迅雷动漫</a></li>
-            <li class="zxx_nav_li"><a href="taobao.php" class="zxx_nav_a">淘宝网</a></li>
-            <li class="zxx_nav_li"><a href="jd.php" class="zxx_nav_a">京东商城</a></li>
-            <li class="zxx_nav_li"><a href="yixun.php" class="zxx_nav_a">易迅网</a></li>
+        	<li class="zxx_nav_li"><a href="./" class="zxx_nav_a<?php echo $arrClass[0]; ?>">首页</a></li>
+            <li class="zxx_nav_li"><a href="xunlei.php" class="zxx_nav_a<?php echo $arrClass[1]; ?>">迅雷动漫</a></li>
+            <li class="zxx_nav_li"><a href="taobao.php" class="zxx_nav_a<?php echo $arrClass[2]; ?>">淘宝网</a></li>
+            <li class="zxx_nav_li"><a href="jd.php" class="zxx_nav_a<?php echo $arrClass[3]; ?>">京东商城</a></li>
+            <li class="zxx_nav_li"><a href="yixun.php" class="zxx_nav_a<?php echo $arrClass[4]; ?>">易迅网</a></li>
             <li class="zxx_nav_sp">
             	<a href="../index.html" class="zxx_gbtn">测试页面</a>&nbsp;
         		<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn" title="visit GitHub">Fork Me</a>

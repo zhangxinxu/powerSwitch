@@ -17,4 +17,4 @@
 	}
 	echo $jquery;
 ?>"></script>
-<script src="jquery-powerSwitch.js"></script>
+<script src="../jquery-powerSwitch.js"></script>

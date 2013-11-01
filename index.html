@@ -8,7 +8,7 @@
 <meta name="keywords" content="powerSwitch, jQuery, 插件" />
 <meta name="author" content="张鑫旭, zhangxinxu" />
 <title>万能切换插件powerSwitch测试页面 » 张鑫旭-鑫空间-鑫生活</title>
-<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -292,6 +292,42 @@
     }
 });</pre></div>
                 </div>
+                <div class="zxx_test_list_list">
+                	<h4 class="f10 mb10">4. 无限切换</h4>
+                    <div id="caroEndless" class="caro_trigger caro_trigger2">
+                    	<a href="javascript:" class="caro_prev" data-rel="caroSwitchEnd">&laquo;上一张</a>
+                        <a href="javascript:" class="caro_next" data-rel="caroSwitchEnd">下一张&raquo;</a>
+                    </div>
+                    <div class="caro_box caro_box2">
+                    	<ul id="caroBoxEnd" class="caro_container caro_container2">
+                        	<li class="caroSwitchEnd"><img src="img/mm1.jpg" width="256" height="191"></li>
+                            <li class="caroSwitchEnd"><img src="img/mm3.jpg"></li>
+                            <li class="caroSwitchEnd"><img src="img/mm4.jpg"></li>
+                        </ul>
+                    </div>
+                    <p class="mt10 explain">无限滚动。隐藏技能。设置匿名API <code>classDisabled</code>为<code>''</code>(空字符串)或<code>null</code>.</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                        <xmp><!-- <div id="caroEndless" class="caro_trigger caro_trigger2">
+    <a href="javascript:" class="caro_prev" data-rel="caroSwitchEnd">&laquo;上一张</a>
+    <a href="javascript:" class="caro_next" data-rel="caroSwitchEnd">下一张&raquo;</a>
+</div>
+<div class="caro_box caro_box2">
+    <ul id="caroBoxEnd" class="caro_container caro_container2">
+        <li class="caroSwitchEnd"><img src="img/mm1.jpg" width="256" height="191"></li>
+        <li class="caroSwitchEnd"><img src="img/mm3.jpg"></li>
+        <li class="caroSwitchEnd"><img src="img/mm4.jpg"></li>
+    </ul>
+</div> --></xmp></div>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">JS代码：</h6>
+                    	<pre>$("#caroEndless a").powerSwitch({
+    classDisabled: '',
+    container: $("#caroBoxEnd"),
+    number: 2
+});</pre>
+                    </div>
+                </div>
             </div>
             <div class="zxx_test_list">
 				<h3 class="f11 mb10">三、手风琴效果</h3>
@@ -530,6 +566,42 @@
 });</xmp>
 					</div>
                 </div>
+                 <div class="zxx_test_list_list">
+                    <h4 class="f10 mb10">4. 同时展开收起多个列表</h4>
+                    <div class="more_toggle">
+                        <ol class="zxx_decimal f9">
+                        	<li>《恋碍选项 第3集》圣光雾气反重力裙 上升气流才是业界良心</li>
+                            <li>《苍蓝钢铁的琶音 第4集》 舰娘战败 大破不可避</li>
+                            <li>《噬血狂袭 第4集》 终于把持不住了 推倒吸血初体验</li>
+                            <li class="dn moreListDn">《境界的彼方 第3集》 眼镜Play黑长直 妹控的妹被玩弄</li>
+                            <li class="dn moreListDn">《新夜樱四重奏 第2集》 砍掉重练好顶赞 萌系画风送福利</li>
+                            <li class="dn moreListDn">《囮物语 第3集》抚子黑化也不忘卖萌 开后宫被捅合情合理(茶)</li>
+                            <li class="dn moreListDn">《萌萌侵略者 第1集》死宅异世界传教萌文化 屌丝瞬间变烧棍</li>
+                        </ol>
+                        <p class="mt10 ml20 f9"><a href="javascript:" id="moreList" class="ml5" data-rel="moreListDn">展开或收起↑↓</a></p>
+                    </div>
+                    <p class="mt10 mb10 explain">测试与上面一次展开2个是否冲突</p>
+                    <div class="zxx_code">
+                    	<h6 class="f9 mb10">HTML代码：</h6>
+                    	<xmp><!-- <ol class="zxx_decimal f9">
+    <li>《恋碍选项 第3集》圣光雾气反重力裙 上升气流才是业界良心</li>
+    <li>《苍蓝钢铁的琶音 第4集》 舰娘战败 大破不可避</li>
+    <li>《噬血狂袭 第4集》 终于把持不住了 推倒吸血初体验</li>
+    <li class="dn moreListDn">《境界的彼方 第3集》 眼镜Play黑长直 妹控的妹被玩弄</li>
+    <li class="dn moreListDn">《新夜樱四重奏 第2集》 砍掉重练好顶赞 萌系画风送福利</li>
+    <li class="dn moreListDn">《囮物语 第3集》抚子黑化也不忘卖萌 开后宫被捅合情合理(茶)</li>
+    <li class="dn moreListDn">《萌萌侵略者 第1集》死宅异世界传教萌文化 屌丝瞬间变烧棍</li>
+</ol>
+<p class="mt10 ml20 f9"><a href="javascript:" id="moreList" class="ml5" data-rel="moreListDn">展开或收起↑↓</a></p> --></xmp>
+					</div>
+                     <div class="zxx_code">
+                        <h6 class="f9 mb10">JS代码：</h6>
+                        <xmp>
+$("#moreList").powerSwitch({
+    toggle: true	
+});</xmp>
+					</div>
+                </div>
                 <div class="zxx_remind">上面测试的例子，结构简单？界面丑陋？略显无聊？那你可以试试<a href="demo/" title="精彩实例">点击这里</a>！</div>
             </div>
         </div>
@@ -605,6 +677,13 @@ $("#caroTriggerOut3 a").powerSwitch({
 		});
 	}
 });
+// 无限切换
+$("#caroEndless a").powerSwitch({
+	classDisabled: '',
+	container: $("#caroBoxEnd"),
+	number: 2
+});
+
 
 $(".handTitle").powerSwitch({
 	animation: "slide"
@@ -638,6 +717,11 @@ $("#wordSlide li").powerSwitch({
 
 $("#moreCommentBtn").powerSwitch({
 	number: 2
+});
+
+// 一次展开多个列表
+$("#moreList").powerSwitch({
+	toggle: true	
 });
 </script>
 </body>

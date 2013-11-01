@@ -1,3 +1,53 @@
-@charset "utf-8";
-/* CSS Document */
-
+.xunlei_hidden {
+	display: none;
+}
+.xunlei_top img {
+	vertical-align: bottom;
+}
+.xunlei_top {
+	position: relative;
+	margin-top: 15px;
+	background-color: #333;
+	overflow: hidden;
+	_zoom: 1;
+}
+.xunlei_top_main {
+	width:730px; height: 400px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.xunlei_main_img {
+	width: 100%; height: 100%;
+	background: url(http://misc.web.xunlei.com/user/images/loading2.gif) no-repeat center;
+}
+.xunlei_thumb_ul {
+	position: absolute; left: 5px; right: 5px; bottom: 10px;
+	_width: 720px;
+}
+.xunlei_thumb_li {
+	width: 72px;
+	float: left;
+	text-align: center;
+}
+.xunlei_top_side {
+	position: absolute; top: 0; bottom: 0; right: 0;
+	width: 250px; _height: 400px;
+}
+.xunlei_main_info {
+	width: 100%; height: 100%;
+}
+.xunlei_main_text {
+	position: absolute; left: 0; bottom: 70px;
+	padding-left: 60px;
+	font-size: 18px; font-family: 'microsoft yahei';
+	color: #fff;
+}
+.xunlei_icon_play {
+	width: 42px; height: 42px;
+	background: url(../img/xunlei/spr_24.png) no-repeat;
+	position: absolute; left: 15px; top: -12px;
+}
+.xunlei_thumb_on img {
+	outline: 2px solid #FACC16;
+}

@@ -33,6 +33,7 @@ a{color:#34538b; text-decoration: none;}
 .zxx_ad_close {font-size:12px; color:#0033ff; position:absolute; right:2px; top:0px; z-index:1000;}
 .zxx_remind { width: 800px; margin: 20px auto; border: 1px solid #FC9; background-color: #ffffe0; text-align: center; padding: 10px 20px; color: #f50; font-size: 12px; }
 .zxx_remind a {  margin-left: 2px; margin-right: 2px; font-family: 'microsoft yahei'; text-decoration: underline; }
+.zxx_decimal { padding-left: 25px; list-style-type: decimal; }
 /* -------------------------------------- divide -------------------------------------------- */
 /* Tab */
 .tablist { background-color: #ddd; font-size: 14px; *zoom: 1; }
@@ -48,11 +49,11 @@ a{color:#34538b; text-decoration: none;}
 .tabpanel_abs img { width: 90%; height: 190px; margin-top: 30px; }
 .tab_limit { width: 300px; margin: auto; }
 .tab_auto_play { position: relative; text-align: center; *zoom:1; z-index: 1; }
-.previous, .next { position: absolute; width: 30px; height: 60px; background: #bbb center no-repeat; border-radius: 4px; }
-.previous { background-image: url(img/prev.png); }
+.prev, .next { position: absolute; width: 30px; height: 60px; background: #bbb center no-repeat; border-radius: 4px; }
+.prev { background-image: url(img/prev.png); }
 .next { background-image: url(img/next.png); }
-.previous:hover, .next:hover { background-color: #aaa; }
-.tab_auto_play .previous { left: -60px; top: 110px; }
+.prev:hover, .next:hover { background-color: #aaa; }
+.tab_auto_play .prev { left: -60px; top: 110px; }
 .tab_auto_play .next { right: -60px; top: 110px; }
 .pause, .play { width: 50px; height: 50px; position: absolute; left: 50%; top: 110px; margin-left: -25px; z-index: 1; }
 .pause { background: url(img/pause.png) no-repeat 0 -50px; }
