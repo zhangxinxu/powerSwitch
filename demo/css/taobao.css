@@ -1,3 +1,163 @@
-@charset "utf-8";
-/* CSS Document */
+img { vertical-align: bottom; }
+.tb_top_body {
+	height: 531px;
+	padding-left: 160px; padding-top: 60px;
+}
+.tb_main_slide {
+	width: 720px;
+	position: relative;
+	float: left;
+}
+.tb_slide_box {
+	width: 520px;	
+	overflow: hidden;
+	position: relative;
+}
+.tb_slide_ad {
+	height: 280px;	
+}
+.tb_slide_brand {
+	height: 250px;
+	border-top: 1px solid #f3f3f3; border-bottom: 1px solid #f3f3f3;
+	margin-top: -2px;
+}
+.tb_slide_img {
+	position: absolute;
+}
+.tb_slide_on,
+.tb_slide_a {
+	display: inline-block;
+	width: 9px; height: 9px;
+	*margin: 0 2px;
+	border-radius: 9px;	
+}
+.tb_slide_btn {
+	position: absolute; bottom: 0; left: 0; bottom: 10px;
+	width: 100%;
+	text-align: center;
+	letter-spacing: 1px;
+}
+.tb_slide_a {
+	background-color: #b7b7b7;
+}
+.tb_slide_on {
+	background-color: #f40;
+}
+.tb_icon_tmall,
+.tb_slide_prev,
+.tb_slide_next {
+	background: url(../img/taobao/sprite_s.png) no-repeat;
+}
+.tb_icon_tmall {
+	position: absolute; z-index: 1;
+	padding-top: 20px;
+	width: 94px; height: 0;
+	background-position: -260px -100px;
+	overflow: hidden;
+}
+.tb_slide_tmall {
+	position: absolute;
+	width: 100%; height: 100%;
+}
+.tb_slide_line_v,
+.tb_slide_line_h {
+	position: absolute;
+	background-color: #f3f3f3;
+}
+.tb_slide_line_v {
+	height: 100%; width: 1px;
+	left: 50%; top: 0;
+}
+.tb_slide_line_h {
+	width: 100%; height: 1px;
+	left: 0; top: 50%;
+	overflow: hidden;
+}
+.tb_slide_prev,
+.tb_slide_next {
+	position: absolute; top: 50%;
+	width: 40px; height: 40px;
+	margin-top: -20px;
+	background-color: #666;
+	background-color: rgba(0,0,0,.3);
+	visibility: hidden;
+	_visibility: visible;
+}
+.tb_slide_prev {
+	background-position: -190px 8px;
+	left: 20px;
+}
+.tb_slide_next {
+	background-position: -188px -32px;
+	right: 20px;
+}
+.tb_slide_box:hover .tb_slide_prev,
+.tb_slide_box:hover .tb_slide_next {
+	visibility: visible;
+}
 
+.tb_ad_aside {
+	width: 200px;
+	position: absolute; right: 0; top: 0;
+}
+
+.tb_quick_panel {
+	width: 300px;
+	float: right;
+}
+.tb_tab_notice {
+	border: 1px solid #eee;
+	overflow: hidden;
+}
+.tb_tab_notice_ul {
+	margin-left: -1px;
+	margin-right: -1px;
+}
+.tb_tab_notice_li {
+	width: 58px; line-height: 26px;
+	padding: 0 1px;
+	border-bottom: 1px solid #eee;
+	background-color: #f7f7f7;
+	float: left;
+}
+.tb_tab_notice_ul .selected {
+	padding: 0;
+	border-bottom-color: #fff;
+	border-left: 1px solid #eee; border-right: 1px solid #eee;
+	background-color: #fff;
+}
+.tb_tab_notice_a {
+	display: block;
+	color: #333;
+	text-align: center;
+}
+.tb_tab_notice_a:hover {
+	text-decoration: none;
+}
+.tb_tab_panel {
+	height: 50px;
+	padding: 10px 5px 10px 19px;
+	overflow: hidden;
+	display: none;
+}
+
+.tb_tab_panel_li {
+	width: 134px;
+	line-height: 25px;
+	float: left;
+}
+.tb_tab_panel_a {
+	color: #333;
+}
+.tb_tab_panel_a:hover,
+.tb_tab_panel_li .h {
+	text-decoration: none;
+	color: #f50;
+}
+.tb_my_info {
+	margin-top: 10px;
+}
+.tb_service {
+	width: 300px; height: 280px;
+	background: url(../img/taobao/service.png) no-repeat;
+}

@@ -1,5 +1,6 @@
 /*!
  * powerSwitch.js by zhangxinxu(.com)
+ * under MIT License
  * you can use powerSwitch to switch anything
 */
 
@@ -85,7 +86,7 @@
 					that.transition(target, params.duration, noAnimate);
 					// 动画触发等
 					that.translate(target, key, value);
-					console.log(value);
+					// console.log(value);
 				} else {
 					// IE6-IE9这些老弱病残
 					// left/top
@@ -130,10 +131,31 @@
 						};
 						
 						if (indexHide != undefined && indexShow != undefined) {
-							// 确定动画起点或终点位置是正的100%还是负的100%
-							// 根据显示的元素是否在即将隐藏元素的后面判断
-							var hundred = ((indexHide < indexShow) * 2 - 1 ) * 100;
-							if (params.autoTime > 0 && !params.container) hundred = 100;
+							// 确定动画起点或终点位置是正的100%还是负的100%							
+							var hundred = 100, isNext = true;
+							// 共存在三种切换情况
+							// 1. 定时
+							// 2. 点击选项卡触发
+							// 3. 点击前进后退按钮触发
+							if (params.prevOrNext) {
+								switch (params.prevOrNext.attr("data-type")) {
+									case "prev": {
+										isNext = false;
+										break;
+									}
+									case "next": {
+										isNext = true;
+										break;
+									}
+									default: {
+										// 这是点击选项卡
+										// 根据前后的位置确定方向
+										isNext = indexHide < indexShow;
+									}
+								}								
+							}
+							
+							hundred = (isNext * 2 - 1 ) * 100;
 							
 							// 清除可能的transition
 							// 因为动画的需要元素要改一下起始位置
@@ -147,6 +169,8 @@
 								funTransform(targetShow, objDirection[params.direction], "0%");	
 							}, 17);
 							
+							// 清除触发源
+							params.prevOrNext = null;					
 						} else {
 							// 索引缺失，直接显示隐藏
 							targetHide.hide();
@@ -294,7 +318,7 @@
 			}
 		}
 		
-		var isMoreToOne = false, elePrev = $(), eleNext = $();
+		var isMoreToOne = false, elePrev = $(), eleNext = $(), elePrevOrNext = $();
 		var funStatePrevNext = function(indexWill) {
 			// 后退按钮的状态
 			if (indexWill <= 0) {
@@ -323,7 +347,7 @@
 				// 初始按钮的状态			
 				funStatePrevNext(indexSelected);
 				// 滚动位置
-				if (indexSelected <= 0) {
+				if (indexSelected <= 0 && params.container) {
 					$(params.container).scrollLeft(0).scrollTop(0);
 				}
 			} else {
@@ -332,14 +356,17 @@
 				eleRelatives.clone().insertAfter(eleRelatives.eq(lenRelatives - 1));
 				// 重新确定关联元素们
 				eleRelatives = $.powerSwitch.getRelative(self, params);
+				// more → one下之前点击的按钮
+				// 用来确定自动播放(如果有)的方向
+				// 默认是next方向
+				elePrevOrNext = self.eq(1);
 			}
 		}
 		// 判断是否1对多
 		var isOneToMore = false;
 		if (self.length == 1 && lenRelatives > 1) {
 			isOneToMore = true;
-		}
-		
+		}		
 		
 		// 切换的核心，所有的切换都要走这一步
 		// 面向切换面板元素设计的切换方法
@@ -420,9 +447,9 @@
 			// 存储title以及index
 			$(element).data("index", index);
 			
-			if (isMoreToOne == true) {				
+			if (isMoreToOne == true) {		
 				$(element).bind("click", function() {
-					var indexWill, eleWill, eleRelativesAll = $();
+					var indexWill, eleWill;
 					if (params.classDisabled) {
 						if ($(this).attr("disabled")) return false;
 						if (index == 0) {
@@ -434,7 +461,6 @@
 						}
 						funSwitchable.call(this, indexWill);	
 					} else if (lenRelatives > numSwitch) {
-						// 重新获得相关面板
 						// 无限滚动
 						if (index == 0) {
 							indexWill = indexSelected - numSwitch;
@@ -444,10 +470,9 @@
 								$(params.container).data("position", eleWill.position());
 								$.powerSwitch.animation(null, null, $.extend({}, params, { animation: "none" }));
 								indexWill = indexSelected + lenRelatives - numSwitch;								
-							}								
+							}			
 						} else if (index == 1) {
 							indexWill = indexSelected + numSwitch;
-							//console.log(indexWill);
 							if (indexWill > lenRelatives * 2 - numSwitch) {
 								// 末位数量不够了
 								eleWill = eleRelatives.eq(indexSelected - lenRelatives);
@@ -457,7 +482,8 @@
 								indexWill = indexSelected - lenRelatives + numSwitch;
 							}
 						}
-						funSwitchable.call(this, indexWill);						
+						funSwitchable.call(this, indexWill);	
+						elePrevOrNext = $(this);			
 					}
 					return false;
 				});
@@ -483,6 +509,8 @@
 				});
 			} else if (params.eventType == "click") {				
 				$(element).bind("click", function() {
+					// 设置标志量，根据位置判断方向
+					params.prevOrNext = $(this);
 					// 点击事件 click events
 					funSwitchable.call(this, index);
 					return false;
@@ -493,6 +521,7 @@
 				}
 			} else if (/^hover|mouseover$/.test(params.eventType)) {				
 				$(element).hover(function() {
+					params.prevOrNext = $(this);
 					// 鼠标经过 hover events
 					clearTimeout(hoverTimer);
 					hoverTimer = setTimeout(function() {
@@ -522,20 +551,23 @@
 				indexWill = lenRelatives -1;
 			}
 			funSwitchable.call(self.get(indexWill), indexWill);
+		}, funPlayPrevOrNext = function() {
+			elePrevOrNext.trigger("click");
 		}, funAutoPlay = function() {
 			clearTimeout(autoPlayTimer);
 			if (funAutoPlay.flagAutoPlay == true) {
 				autoPlayTimer = setTimeout(function() {
-					funPlayNext();					
+					isMoreToOne == false? funPlayNext(): funPlayPrevOrNext();					
 					funAutoPlay();								
 				}, params.autoTime);
 			}
 		};
 		
 		
-		if (isMoreToOne == false && isOneToMore == false && params.toggle == false) {			
+		// 单对单模式，或者无限切换的多对一模式支持自动播放
+		if ((isOneToMore == false && params.toggle == false && isMoreToOne == false) || (isMoreToOne == true && !params.classDisabled)) {			
 			// 创建前进、后退、以及暂停按钮
-			if (params.container) {
+			if (params.container && isMoreToOne == false) {
 				var htmlTempOperate = '';
 				self.length && $.each(["Prev", "Pause", "Next"], function(index, key) {
 					if (params.autoTime == 0 && key == "Pause") return;
@@ -548,6 +580,7 @@
 						indexWill = indexSelected;
 					switch (type) {
 						case "prev": {
+							params.prevOrNext = $(this);
 							funPlayPrev();
 							break	
 						}
@@ -564,30 +597,30 @@
 							break	
 						}
 						case "next": {
+							params.prevOrNext = $(this);
 							funPlayNext();
 							break	
 						}
 					}
-				});	
-				
-				if (params.autoTime) {
-					// 定时播放相关事件绑定
-					params.container.hover(function() {
-						clearTimeout(autoPlayTimer);	
-					}, function() {
-						funAutoPlay();	
-					});
-				}
+				});			
 			}
 			
-			if (params.autoTime) {			
-				// 选项卡，以及切换面板鼠标经过停止自动播放				
-				$(self, eleRelatives).hover(function() {
-					clearTimeout(autoPlayTimer);
-				}, function() {
-					funAutoPlay();
+			if (params.autoTime) {
+				// 定时播放相关事件绑定
+				// 自定义按钮容器，选项卡，以及切换面板鼠标经过停止自动播放
+				// 如果容器存在，且是包含关系
+				// 只要绑定容器就可以
+				var arrHoverPlay = [self, eleRelatives, params.container];
+				if (isMoreToOne == true || (document.body.contains && params.container && params.container.get(0).contains(eleRelatives.get(0)))) {
+					arrHoverPlay = [self, params.container];
+				}
+				$.each(arrHoverPlay, function(index, hoverTarget) {
+					if (hoverTarget) hoverTarget.hover(function() {
+						clearTimeout(autoPlayTimer);
+					}, function() {
+						funAutoPlay();
+					});						
 				});
-				
 				funAutoPlay.flagAutoPlay = true;
 				funAutoPlay();
 			}
