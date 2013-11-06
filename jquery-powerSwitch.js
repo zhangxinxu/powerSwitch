@@ -59,11 +59,15 @@
 			if (isAnimation == false) return;
 			// CSS3 transition设置
 			if (isReset == true) {
-				target.css("webkitTransition", "none").css("transition", "none");
-				target.data("hasTransition", false);
+				target.css("webkitTransition", "none").css("transition", "none")
+					.data("hasTransition", false);
 			} else if (!target.data("hasTransition")) {
-				target.css("webkitTransition", "-webkit-" + transform).css("transition", transform);
-				target.data("hasTransition", true);
+				target.css({
+					webkitTransition: "-webkit-" + transform,
+					webkitBackfaceVisibility: "hidden",
+					transition: transform,
+					BackfaceVisibility: "hidden"
+				}).data("hasTransition", true);
 			}
 		},
 		translate: function(target, key, value) {
@@ -401,18 +405,22 @@
 					$.powerSwitch.animation(null, eleWillRelative, params);
 					// 回调
 					params.onSwitch.call(this, eleWillRelative);
-				} else {					
+				} else {						
 					// 1 vs 1 或者 1 vs many情况下
 					// 关心按钮选中与不选中的样子
-					eleSelected = self.eq(indexSelected);
 					eleWillSelect = self.eq(indexWill);
-					eleRelative = eleRelatives.slice(indexSelected, indexSelected + numSwitch);	
-					
+					if (indexSelected >= 0) {
+						eleSelected = self.eq(indexSelected);
+						eleRelative = eleRelatives.eq(indexSelected, indexSelected + numSwitch);
+					} else {
+						eleSelected = $();
+						eleRelative = $();
+					}
+
 					// 触发元素的类名状态改变
 					eleWillSelect.addClass(params.classAdd).removeClass(params.classRemove);
-					
 					// 已选元素的改变
-					eleSelected.addClass(params.classRemove).removeClass(params.classAdd);
+					if (indexSelected !== indexWill) eleSelected.addClass(params.classRemove).removeClass(params.classAdd);
 					// 对应元素的显隐控制
 					$.powerSwitch.animation(eleRelative, eleWillRelative, params);
 					// 回调

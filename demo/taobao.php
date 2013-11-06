@@ -128,7 +128,26 @@
                 </div>
                 <img class="tb_my_info" src="img/taobao/my-info.png">
                 <div class="tb_service">
-                
+                	<div id="servBtnBox" class="tb_service_x">
+                    	<a href="javascript:" class="tb_service_li servBrnBind" data-rel="expTel">话费<i class="tb_service_corner"></i></a><!-- tb_service_on -->
+                        <a href="javascript:" class="tb_service_li servBrnBind" data-rel="expGame">游戏<i class="tb_service_corner"></i></a>
+                        <a href="javascript:" class="tb_service_li servBrnBind" data-rel="expTrval">旅行<i class="tb_service_corner"></i></a>
+                        <a href="javascript:" class="tb_service_li servBrnBind" data-rel="expSafety">保险<i class="tb_service_corner"></i></a>
+                        <a href="javascript:" class="tb_service_li">彩票</a>
+                        <a href="javascript:" class="tb_service_li">电影票</a>
+                        <a href="javascript:" class="tb_service_li">点外卖</a>
+                        <a href="javascript:" class="tb_service_li">理财</a>
+                        <a href="javascript:" class="tb_service_li">电子书</a>
+                        <a href="javascript:" class="tb_service_li">音乐</a>
+                        <a href="javascript:" class="tb_service_li">水电煤</a>
+                    </div>
+                    <div id="servFloat" class="tb_service_fl"><!-- add active -->
+                    	<a href="javascript:" id="servFloatShut" class="tb_service_fl_shut" title="关闭"></a>
+                        <img id="expTel" src="img/taobao/exp-tel.png" style="display: none;">
+                        <img id="expGame" src="img/taobao/exp-game.png" style="display: none;">
+                        <img id="expTrval" src="img/taobao/exp-trval.png" style="display: none;">
+                        <img id="expSafety" src="img/taobao/exp-safety.png" style="display: none;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,6 +161,11 @@
 	include('_include/footer.php'); 
 ?>
 <script>
+// IE10+ ...
+if (typeof history.pushState !== "function") {
+	document.body.className = "fuck-ie6-ie9";
+}
+
 // 第一个大图广告slide
 $("#adSlideBtn a").powerSwitch({
 	autoTime: 4000,
@@ -174,9 +198,34 @@ $("#tmallSlideBtn a").powerSwitch({
 	}
 });	
 
+// 选项卡
 $("#tabNoticeBox li").powerSwitch({
 	eventType: "hover",
 	classAdd: "selected"
+});
+
+// 便民服务面板
+var eleServFloat = $("#servFloat"), eleServBtn = $("#servBtnBox"), eleFloatShut = $("#servFloatShut");
+$(".servBrnBind").powerSwitch({
+	eventType: "hover",
+	hoverDelay: 100,
+	classAdd: "tb_service_on",
+	onSwitch: function() {
+		eleServFloat.addClass("active");
+		setTimeout(function() { eleServBtn.addClass("done"); }, 150);
+	}
+});
+
+eleFloatShut.bind("click", function() {
+	eleServFloat.removeClass("active");
+	setTimeout(function() { eleServBtn.removeClass("done"); }, 150);
+	$(".tb_service_on").removeClass("tb_service_on");
+});
+
+$(document.body).bind("click", function(event) {
+	if (!eleServFloat.get(0).contains(event.target) && !eleServBtn.get(0).contains(event.target)) {
+		eleFloatShut.trigger("click");
+	}
 });
 </script>
 </body>

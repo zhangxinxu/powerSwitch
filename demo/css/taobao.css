@@ -45,7 +45,8 @@ img { vertical-align: bottom; }
 }
 .tb_icon_tmall,
 .tb_slide_prev,
-.tb_slide_next {
+.tb_slide_next,
+.tb_service_fl_shut {
 	background: url(../img/taobao/sprite_s.png) no-repeat;
 }
 .tb_icon_tmall {
@@ -112,6 +113,7 @@ img { vertical-align: bottom; }
 .tb_tab_notice_ul {
 	margin-left: -1px;
 	margin-right: -1px;
+	*zoom: 1;
 }
 .tb_tab_notice_li {
 	width: 58px; line-height: 26px;
@@ -160,4 +162,80 @@ img { vertical-align: bottom; }
 .tb_service {
 	width: 300px; height: 280px;
 	background: url(../img/taobao/service.png) no-repeat;
+	position: relative;
+	overflow: hidden;
+}
+.tb_service_x {
+	padding: 44px 0 0 17px;
+	overflow: hidden;
+	_zoom: 1;
+}
+.tb_service_li {
+	width: 58px; height: 28px;
+	padding-top: 37px;
+	margin: 0 10px 10px 0;
+	text-align: center;
+	color: #9c9c9c;
+	float: left;
+	position: relative;
+}
+.tb_service_li:hover,
+.tb_service_on {
+	text-decoration: none;
+	color: #f50;	
+}
+.tb_service_li:after {
+	content: '';
+	position: absolute; left: 0; bottom: 0;
+	z-index: 1;
+	width: 100%; height: 2px;
+	background-color: #fff;
+	visibility: hidden;
+	-webkit-transition: visibility .01s .1s;
+	        transition: visibility .01s .1s;
+}
+.done .tb_service_li:after {
+	-webkit-transition: none;
+	        transition: none;
+}
+.tb_service_on:after {
+	visibility: visible;
+}
+.tb_service_corner {
+	position: absolute; left: 50%; bottom: 6px;
+	margin-left: -3px;
+	width: 6px; height: 4px;
+	background: url(../img/taobao/corner.png) no-repeat 0 -6px;
+	-webkit-transition: -webkit-transform .1s;
+	        transition: -webkit-transform .1s;
+}
+.tb_service_on .tb_service_corner {
+	-webkit-transform: rotate(180deg);
+	        transform: rotate(180deg);
+}
+.fuck-ie6-ie9 .tb_service_on .tb_service_corner {
+	background-position: 0 0 ;
+}
+
+.tb_service_fl {
+	position: absolute; left: 1px; right: 1px; top: 280px;
+	width: 298px; height: 170px;
+	border-top: 1px solid #ddd;
+	background-color: #fff;
+	-webkit-transition: top .25s;
+	        transition: top .25s;
+}
+.tb_service .active {
+	top: 107px;
+}
+.tb_service_fl_shut {
+	position: absolute;
+	width: 18px; height: 18px;
+	margin: 1px 0 0 280px;
+	background-position: -376px -36px;	
+	background-color: #fff;
+}
+.tb_service_fl_shut:hover {
+	background-position: -376px -56px;
+	background-color: #f40;
 }

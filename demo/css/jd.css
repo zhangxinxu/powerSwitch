@@ -1,3 +1,81 @@
-@charset "utf-8";
-/* CSS Document */
-
+.jd_body {
+	padding: 62px 0 0 220px;
+	height: 400px;
+	overflow: hidden;
+}
+.jd_body img {
+	vertical-align: bottom;
+}
+.jd_ad_slide {
+	width: 670px; height: 400px;
+	float: left;
+	position: relative;
+} 
+.jd_ad_img {
+	position: absolute; left: 0; top: 0;
+	width: 100%; height: 100%;
+	display: none;
+}
+.jd_ad_btn {
+	position: absolute; right: 3px; bottom: 8px;
+}
+.jd_ad_btn_a {
+	width: 22px; height: 22px;
+	line-height: 22px;
+	margin-right: 5px;
+	text-align: center;
+	border-radius: 12px;
+	background-color: #999;
+	color: #fff;
+	float: left;
+}
+.jd_ad_btn_a:hover {
+	text-decoration: none;
+}
+.jd_ad_btn .active {
+	background-color: #E4393C;
+}
+.jd_service {
+	width: 310px;
+	padding-top: 230px;
+	float: right;
+}
+.jd_nav_x {
+	_width: 100%;
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+}
+.js_nav_a {
+	width: 25%; *width: 24.9%;
+	line-height: 20px;
+	padding: 5px 0;
+	text-align: center;
+	font-size: 14px; font-family: 'microsoft yahei';
+	float: left;
+}
+.jd_nav_x .active {
+	color: #E4393C;
+}
+.jd_service_con {
+	height: 136px;
+	border: 1px solid #f1f1f1; border-top: 2px solid #aaa;
+	position: relative;
+}
+.jd_service_img {
+	position: absolute;
+	display: none;
+}
+.jd_point_line {
+	position: absolute; top: -2px; left: 0; z-index: 1;
+	width: 25%;
+	border-bottom: 2px solid #E4393C;
+	text-align: center;
+}
+.jd_point_cor {
+	position: absolute; bottom: 0; left: 50%;
+	width: 0; height: 0;
+	margin-left: -5px;
+	border-style: dashed dashed solid; border-width: 5px; border-color: transparent transparent #E4393C;
+	overflow: hidden;
+}

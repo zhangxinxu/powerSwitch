@@ -2,10 +2,10 @@
 <html>
 <head>
 <?php 
-	$key = '首页';
+	$key = '易迅网';
 	include('_include/header.php'); 
 ?>
-<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/yixun.css" />
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 
 <div class="zxx_body">
 	<div class="zxx_constr">
-    	<!--  body of index.php -->
+    	<!--  body of yixun.php -->
              
     </div>
 </div>
