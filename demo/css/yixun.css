@@ -1,3 +1,217 @@
-@charset "utf-8";
-/* CSS Document */
+.yixun_body {
+	height: 631px;
+	padding: 61px 0 0 190px;	
+	overflow: hidden;
+}
+.yixun_main {
+	width: 800px;
+	float: left;
+}
+.yixun_ad_slide {
+	width: 100%; height: 327px;	
+	box-shadow: inset 1px 2px rgba(0,0,0,.35);
+	position: relative;
+	overflow: hidden;
+}
+.yixun_ad_slide img {
+	position: absolute; left: 0; top: 0;
+	width: 100%; height: 100%;
+}
+.yixun_ad_btn {
+	position: absolute; left: 10px; bottom: 10px;
+}
+.yixun_ad_btn a {
+	float: left;
+	width: 22px; height: 22px;
+	margin-right: 10px;
+	cursor: pointer;
+	font: 400 16px/22px "\5FAE\8F6F\96C5\9ED1", Arial;
+	_line-height: 21px;
+	color: #fff;
+	border-radius: 50%;
+	background-color: #444;
+	text-align: center;
+}
+.yixun_body a:hover {
+	text-decoration: none;
+}
+.yixun_ad_btn .active {
+	background-color: #f70;
+}
+.yixun_ad_operate {
+	position: relative;
+}
+.yixun_ad_slide .prev,
+.yixun_ad_slide .next,
+.yixun_notice_prev,
+.yixun_notice_next {
+	background: url(../img/yixun/index.png) no-repeat;
+}
+.yixun_ad_slide .prev,
+.yixun_ad_slide .next {
+	position: absolute; top: 115px;
+	width: 40px; height: 100px;
+	outline: 0;
+	filter: alpha(opacity=10); opacity: .1;
+	-webkit-transition: all .3s ease-out;
+	        transition: all .3s ease-out;
+	visibility: hidden;
+}
+.yixun_ad_slide .prev {
+	left: 0;
+	background-position: 0 0;
+}
+.yixun_ad_slide .next {
+	right: 0;
+	background-position: -50px 0;
+}
+.yixun_ad_slide:hover .prev,
+.yixun_ad_slide:hover .next {
+	visibility: visible;
+}
+.prev:hover,
+.next:hover {
+	filter: alpha(opacity=100); opacity: 1;
+}
 
+.yixun_cheap {
+	height: 54px;
+	overflow: hidden;
+}
+.yixun_cheap_txt {
+	padding-left: 40px;
+	font: 700 16px/54px "\5FAE\8F6F\96C5\9ED1";
+	color: #29333f;
+	float: left;
+}
+.yixun_cheap_link {
+	width: 85px; height: 16px; line-height: 16px;
+	padding: 10px 0;
+	color: #fff;
+	text-align: center;
+	font-size: 14px; font-family: \5FAE\8F6F\96C5\9ED1;
+	float: right;
+}
+.yixun_corr_wh,
+.yixun_corl_wh {
+	position: absolute;
+	width: 0; height: 0;
+	margin-top: 6px; *margin-top: 8px;
+	overflow: hidden;
+	font-size: 0;
+}
+.yixun_corr_wh {	
+	margin-left: 5px;	
+	border-width: 4px 0 4px 4px; border-color: transparent transparent transparent #fff; border-style: dashed dashed dashed solid;
+}
+.yixun_corl_wh {
+	margin-left: -8px;
+	border-width: 4px 4px 4px 0; border-style: dashed solid dashed dashed; border-color: transparent #fff transparent transparent;
+}
+.yixun_cheap_img {
+	vertical-align: top;
+}
+
+.yixun_side {
+	width: 199px;
+	background-color: #f4f4f4;
+	float: left;
+}
+.yixun_side_border {
+	padding-top: 4px; margin-right: -1px;
+	background-color: #ff8a00;
+}
+.yixun_advance {
+	height: 125px;
+	position: relative;
+	overflow: hidden;
+}
+.yixun_advance img {
+	position: absolute;
+}
+.yixun_dot_x {
+	position: absolute; left: 15px; bottom: 0;
+	line-height: 22px;
+	font-size: 19px; font-family: Tahoma, Geneva, sans-serif;
+}
+.yixun_dot_x a {
+	color: #666;
+}
+.yixun_dot_x .on {
+	color: #f70;
+}
+.yixun_service {
+	border-top: 1px solid #cbcbcb; border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 5px #ccc;
+	overflow: hidden;
+	_zoom: 1;
+}
+.yixun_service_h {
+	display: inline;
+	width: 99px; height:29px; line-height: 29px;
+	border-left: 1px solid #ccc;
+	margin: 0 0 0 -1px;
+	text-align: center;
+	color: #666;
+	cursor: pointer;
+	float: left;
+}
+.yixun_service_h:hover {
+	color: #333;
+}
+.yixun_notice {
+	height: 100px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+	overflow: hidden;
+}
+.yixun_notice_title {
+	margin: 10px 0 0 15px;
+	font-size: 16px; font-family: 'microsoft yahei'; font-weight: 400;
+}
+.yixun_notice_detail .hidden {
+	display: none;
+}
+.yixun_notice_operate {
+	position: absolute;
+	right: 15px; top: 15px;
+}
+.yixun_notice_prev,
+.yixun_notice_next {
+	float: left;
+	width: 12px; height: 13px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	margin-left: 3px;
+	cursor: pointer;
+}
+.yixun_notice_prev {
+	background-position: -120px -120px;
+}
+.yixun_notice_next {
+	background-position: -160px -120px;
+}
+.yixun_notice_prev:hover,
+.yixun_notice_next:hover {
+	border-color: #aaa;
+}
+.yixun_notice_detail {
+	padding: 10px 0 0 15px;
+	line-height: 22px;
+	color: #666;
+}
+.yixun_notice_detail ul {
+	width: 180px;
+	position: absolute;
+	background-color: #f4f4f4;
+}
+.yixun_code_slide {
+	height: 94px;
+}
+.yixun_code_img {
+	position: absolute;
+}
+.yixun_code {
+	height: 113px;
+	position: relative;
+}

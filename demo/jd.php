@@ -25,12 +25,12 @@
         <div class="jd_body">
         	<div id="jdAdSlide" class="jd_ad_slide">
             	<img src="http://img13.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg" class="jd_ad_img">
-                <img src="http://img13.360buyimg.com/da/g14/M05/19/1F/rBEhVlJ4ugUIAAAAAADNu0WERsYAAFE9ABekBAAAM3T074.jpg" class="jd_ad_img">
-                <img src="http://img10.360buyimg.com/da/g13/M00/14/08/rBEhUlJzCqoIAAAAAAE7yTNr8uEAAE2ggLjA1QAATvh176.jpg" class="jd_ad_img">
-                <img src="http://img14.360buyimg.com/da/g14/M00/1A/00/rBEhVVJ40jMIAAAAAAEESo4hULIAAFFRgKzU_IAAQRi366.jpg" class="jd_ad_img">
-                <img src="http://img13.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg" class="jd_ad_img">
-                <img src="http://img14.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5mUEIAAAAAAFZ8YVO0RYAAFGEwKl9xAAAVoJ892.jpg" class="jd_ad_img">
-                <img src="http://img10.360buyimg.com/da/g14/M00/1A/03/rBEhVlJ5sGsIAAAAAAEw4mmfc50AAFGdwOMkwIAATD6787.jpg" class="jd_ad_img">
+                <img data-src="http://img13.360buyimg.com/da/g14/M05/19/1F/rBEhVlJ4ugUIAAAAAADNu0WERsYAAFE9ABekBAAAM3T074.jpg" class="jd_ad_img">
+                <img data-src="http://img10.360buyimg.com/da/g13/M00/14/08/rBEhUlJzCqoIAAAAAAE7yTNr8uEAAE2ggLjA1QAATvh176.jpg" class="jd_ad_img">
+                <img data-src="http://img14.360buyimg.com/da/g14/M00/1A/00/rBEhVVJ40jMIAAAAAAEESo4hULIAAFFRgKzU_IAAQRi366.jpg" class="jd_ad_img">
+                <img data-src="http://img13.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg" class="jd_ad_img">
+                <img data-src="http://img14.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5mUEIAAAAAAFZ8YVO0RYAAFGEwKl9xAAAVoJ892.jpg" class="jd_ad_img">
+                <img data-src="http://img10.360buyimg.com/da/g14/M00/1A/03/rBEhVlJ5sGsIAAAAAAEw4mmfc50AAFGdwOMkwIAATD6787.jpg" class="jd_ad_img">
                 <div id="jdAdBtn" class="jd_ad_btn"></div><!-- add active -->
             </div>
             <!-- 右侧的服务 -->
@@ -70,7 +70,13 @@ $("#jdAdSlide img").each(function(index, image) {
 $("#jdAdBtn").html(htmlAdBtn).find("a").powerSwitch({
 	eventType: "hover",
 	classAdd: "active",
-	animation: "fade"	
+	animation: "fade",
+	autoTime: 5000,
+	onSwitch: function(image) {
+		if (!image.attr("src")) {
+			image.attr("src", image.attr("data-src"));	
+		}
+	}
 }).eq(0).trigger("mouseover");
 
 // 便民服务

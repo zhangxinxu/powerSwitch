@@ -185,14 +185,34 @@
 					}
 					case "slide": {
 						// 手风琴slideup/slidedown效果
-						if (targetHide) targetHide.slideUp(params.duration);
-						if (targetShow) targetShow.slideDown(params.duration);
+						if (params.duration != "sync") {
+							if (targetHide) targetHide.slideUp(params.duration);
+							if (targetShow) targetShow.slideDown(params.duration);
+						} else {
+							if (targetHide) {
+								targetHide.slideUp("normal", function() {
+									if (targetShow) targetShow.slideDown();
+								});
+							} else if (targetShow) {
+								targetShow.slideDown();
+							}
+						}						
 						break;
 					}
 					case  "fade": {
 						// 淡入淡出效果
-						if (targetHide) targetHide.fadeOut(params.duration);
-						if (targetShow) targetShow.fadeIn(params.duration);	
+						if (params.duration != "sync") {
+							if (targetHide) targetHide.fadeOut(params.duration);
+							if (targetShow) targetShow.fadeIn(params.duration);
+						} else {
+							if (targetHide) {
+								targetHide.fadeOut("normal", function() {
+									if (targetShow) targetShow.fadeIn();	
+								});	
+							} else if (targetShow) {
+								targetShow.fadeIn();	
+							}
+						}
 						break;
 					}
 					case  "visibility": {
@@ -251,7 +271,7 @@
 			classPrefix: "",      // eg. "prefix" → prefix_disabled, prefix_prev, prefix_play, prefix_pause, prefix_next
 			attribute: "data-rel",
 			animation: "auto",	  // 其他可选值："none|display", "visibility", "translate", "fade", "slide"
-			duration: 250,        // 动画持续时间，单位毫秒
+			duration: 250,        // 动画持续时间，单位毫秒, 如果使用"sync"则表示同步
 			container: null,
 			autoTime: 0,          // 自动播放时间
 			number: "auto",       // 每次切换的数目
@@ -342,7 +362,6 @@
 		// 判断是否是多对一的关系
 		if (self.eq(0).data("isMoreToOne") == true) {
 			isMoreToOne = true;
-			
 			// 如果不是无限滚动
 			if (params.classDisabled) {
 				elePrev = self.eq(0), eleNext = self.eq(1);
@@ -354,7 +373,7 @@
 				if (indexSelected <= 0 && params.container) {
 					$(params.container).scrollLeft(0).scrollTop(0);
 				}
-			} else {
+			} else if (params.container) {
 				// 无限滚动
 				// 克隆并载入				
 				eleRelatives.clone().insertAfter(eleRelatives.eq(lenRelatives - 1));
@@ -364,6 +383,10 @@
 				// 用来确定自动播放(如果有)的方向
 				// 默认是next方向
 				elePrevOrNext = self.eq(1);
+			} else {
+				// 伪多对1，动画只能是fade或普通显隐
+				elePrev = self.eq(0), eleNext = self.eq(1);	
+				elePrevOrNext = eleNext;
 			}
 		}
 		// 判断是否1对多
@@ -384,16 +407,21 @@
 				// 而不是选中与不选中的样式切换状态
 				if (isMoreToOne == true) {
 					// 偏移元素就是 eleWillRelative
-					// 获取相对父元素的偏移
-					var position = eleWillRelative.position();
-					// 定位
-					params.container = $(params.container);
-					// 位置存储（动画终点位置）
-					params.container.data("position", position);
-					// 容器动画
-					$.powerSwitch.animation(null, null, params);					
-					// 按钮状态					
-					params.classDisabled && funStatePrevNext(indexWill);
+					if (params.container) {					
+						// 获取相对父元素的偏移
+						var position = eleWillRelative.position();
+						// 定位
+						params.container = $(params.container);
+						// 位置存储（动画终点位置）
+						params.container.data("position", position);
+						// 容器动画
+						$.powerSwitch.animation(null, null, params);					
+						// 按钮状态					
+						params.classDisabled && funStatePrevNext(indexWill);
+					} else {
+						// 容器动画
+						$.powerSwitch.animation(eleRelatives.eq(indexSelected, indexSelected + numSwitch), eleWillRelative, params);	
+					}
 					
 					// 回调
 					params.onSwitch.call(this, eleWillRelative);
@@ -408,6 +436,7 @@
 				} else {						
 					// 1 vs 1 或者 1 vs many情况下
 					// 关心按钮选中与不选中的样子
+					// console.log([indexWill, indexSelected].join());
 					eleWillSelect = self.eq(indexWill);
 					if (indexSelected >= 0) {
 						eleSelected = self.eq(indexSelected);
@@ -468,7 +497,7 @@
 							indexWill = Math.min(indexWill, lenRelatives - 1);
 						}
 						funSwitchable.call(this, indexWill);	
-					} else if (lenRelatives > numSwitch) {
+					} else if (params.container && lenRelatives > numSwitch) {
 						// 无限滚动
 						if (index == 0) {
 							indexWill = indexSelected - numSwitch;
@@ -492,6 +521,9 @@
 						}
 						funSwitchable.call(this, indexWill);	
 						elePrevOrNext = $(this);			
+					} else {
+						index? funPlayNext(this): funPlayPrev(this);
+						elePrevOrNext = $(this);
 					}
 					return false;
 				});
@@ -547,18 +579,18 @@
 		});
 		
 		// 自动播放
-		var funPlayNext = function() {
+		var funPlayNext = function(trigger) {
 			var indexWill = indexSelected + 1;
 			if (indexWill >= lenRelatives) {
 				indexWill = 0;
 			}
-			funSwitchable.call(self.get(indexWill), indexWill);
-		}, funPlayPrev = function() {
+			funSwitchable.call(trigger || self.get(indexWill), indexWill);
+		}, funPlayPrev = function(trigger) {
 			var indexWill = indexSelected - 1;
 			if (indexWill < 0) {
 				indexWill = lenRelatives -1;
 			}
-			funSwitchable.call(self.get(indexWill), indexWill);
+			funSwitchable.call(trigger || self.get(indexWill), indexWill);
 		}, funPlayPrevOrNext = function() {
 			elePrevOrNext.trigger("click");
 		}, funAutoPlay = function() {
@@ -623,10 +655,10 @@
 					arrHoverPlay = [self, params.container];
 				}
 				$.each(arrHoverPlay, function(index, hoverTarget) {
-					if (hoverTarget) hoverTarget.hover(function() {
-						clearTimeout(autoPlayTimer);
-					}, function() {
-						funAutoPlay();
+					if (hoverTarget) hoverTarget.hover(function(event) {
+						if (event.pageX !== undefined || params.eventType == "click") clearTimeout(autoPlayTimer);
+					}, function(event) {
+						if (event.pageX !== undefined || params.eventType == "click") funAutoPlay();
 					});						
 				});
 				funAutoPlay.flagAutoPlay = true;
