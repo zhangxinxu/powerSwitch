@@ -34,6 +34,10 @@ a{color:#34538b; text-decoration: none;}
 .zxx_remind { width: 800px; margin: 20px auto; border: 1px solid #FC9; background-color: #ffffe0; text-align: center; padding: 10px 20px; color: #f50; font-size: 12px; }
 .zxx_remind a {  margin-left: 2px; margin-right: 2px; font-family: 'microsoft yahei'; text-decoration: underline; }
 .zxx_decimal { padding-left: 25px; list-style-type: decimal; }
+.zxx_api { width: 40px; height: 40px; line-height: 40px; font-size: 15px; font-family: tahoma; text-align:center; overflow: hidden; position: fixed; right: 0 ; top: 0; color: #fff; background-color: #34538b; background-color: rgba(0,0,0,0); }
+.zxx_api::before { content: ''; width: 80px; height: 80px; border-radius: 80px; background-color: #34538b; position:absolute; right: -40px; top: -40px;}
+.zxx_api::after { content: 'API'; position: absolute; top: -4px; left: 14px; }
+.zxx_api:hover::before { background-color: #cd0000; }
 /* -------------------------------------- divide -------------------------------------------- */
 /* Tab */
 .tablist { background-color: #ddd; font-size: 14px; *zoom: 1; }

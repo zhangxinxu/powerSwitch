@@ -12,9 +12,9 @@ img { border: 0; }
 .zxx_header { height: 70px; background-color: #fff; }
 .zxx_logo { position: absolute; margin-top: 14px; }
 .zxx_author_time { float: right; margin-top: 40px; color: #999; font-family: tahoma; }
-.zxx_api { width: 40px; height: 40px; overflow: hidden; position: absolute; right: 0 ; top: 0; color: #fff; }
+.zxx_api { width: 40px; height: 40px; line-height: 40px; font-size: 15px; font-family: tahoma; text-align:center; overflow: hidden; position: fixed; right: 0 ; top: 0; color: #fff; background-color: #34538b; background-color: rgba(0,0,0,0); }
 .zxx_api::before { content: ''; width: 80px; height: 80px; border-radius: 80px; background-color: #34538b; position:absolute; right: -40px; top: -40px;}
-.zxx_api::after { content: 'API'; position: absolute; top: 5px; left: 14px; color: #fff; font-size: 15px; font-family: tahoma; }
+.zxx_api::after { content: 'API'; position: absolute; top: -4px; left: 14px; }
 .zxx_api:hover::before { background-color: #cd0000; }
 .zxx_nav { border-top: 4px solid #a0b3d6; background-color: #beceeb; }
 .zxx_nav_ul { width: 100%; overflow: hidden; font-size: 14px; font-weight: bold; }

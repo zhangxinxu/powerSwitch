@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=7" />
+<meta http-equiv="description" content="jQuery万能切换插件powerSwitch API简介 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端文档页面之jQuery万能切换插件powerSwitch API简介" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件, API" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>万能切换插件powerSwitch API简介 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="api.css">
+</head>
+
+<body>
+<div class="zxx_header">
+    <div class="zxx_constr">
+        <a href="http://www.zhangxinxu.com/" class="zxx_logo">
+            <img class="l" src="../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+        </a>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+    </div>
+</div>
+<div class="zxx_nav">
+	<div class="zxx_constr">
+    	<ul class="zxx_nav_ul">
+        	<li class="zxx_nav_li"><a href="index.html" class="zxx_nav_a zxx_nav_on">API简介</a></li>
+            <li class="zxx_nav_li"><a href="../index.html" class="zxx_nav_a">测试页面</a></li>
+            <li class="zxx_nav_li"><a href="../demo/" class="zxx_nav_a">实例页面</a></li>
+            <li class="zxx_nav_sp"><a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn">Fork Me</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="zxxBody" class="zxx_body">
+	<div class="zxx_side">
+    	<h6 class="zxx_api_title">• 基本API</h6>
+        <a href="#direction" class="zxx_api_a zxx_api_on" name="apiSwitch">direction</a>
+        <a href="#eventType" class="zxx_api_a" name="apiSwitch">eventType</a>
+        <a href="#classAdd" class="zxx_api_a" name="apiSwitch">classAdd</a>
+        <a href="#classRemove" class="zxx_api_a" name="apiSwitch">classRemove</a>
+        <a href="#classPrefix" class="zxx_api_a" name="apiSwitch">classPrefix</a>
+        <a href="#attribute" class="zxx_api_a" name="apiSwitch">attribute</a>
+        <a href="#animation" class="zxx_api_a" name="apiSwitch">animation</a>
+        <a href="#duration" class="zxx_api_a" name="apiSwitch">duration</a>
+        <a href="#container" class="zxx_api_a" name="apiSwitch">container</a>
+        <a href="#autoTime" class="zxx_api_a" name="apiSwitch">autoTime</a>
+        <a href="#number" class="zxx_api_a" name="apiSwitch">number</a>
+        <a href="#hoverDelay" class="zxx_api_a" name="apiSwitch">hoverDelay</a>
+        <a href="#toggle" class="zxx_api_a" name="apiSwitch">toggle</a>
+        <a href="#onSwitch" class="zxx_api_a" name="apiSwitch">onSwitch</a>
+        <h6 class="zxx_api_title">• 匿名API</h6>
+        <a href="#classDisabled" class="zxx_api_a" name="apiSwitch">classDisabled</a>
+        <a href="#classPrev" class="zxx_api_a" name="apiSwitch">classPrev</a>
+        <a href="#classNext" class="zxx_api_a" name="apiSwitch">classNext</a>
+        <a href="#classPlay" class="zxx_api_a" name="apiSwitch">classPlay</a>
+        <a href="#classPause" class="zxx_api_a">classPause</a>
+        <h6 class="zxx_api_title">• 更多信息</h6>
+        <a href="http://www.zhangxinxu.com/wordpress/?p=3758" class="zxx_api_a">相关文章</a>
+    </div>
+    <div id="direction" class="zxx_api_detail" style="visibility: visible;">
+    	<div class="zxx_api_content">
+        	<h2>direction</h2>
+            <h3>概述</h3>
+            <p>表示位移动画(translate)（如果有）的方向。</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示水平方向的运动。</li>
+                <li><code>vertical</code> 表示垂直方向的位移。</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="eventType" class="zxx_api_detail" style="visibility: visible;">
+    	<div class="zxx_api_content">
+        	<h2>eventType</h2>
+            <h3>概述</h3>
+            <p>表示事件类型。</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>click</code> 默认参数。表示点击事件。</li>
+                <li><code>hover</code>或<code>mouseover</code> 表示鼠标经过事件。</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="classAdd" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classAdd</h2>
+            <h3>概述</h3>
+            <p>一般用在选项卡切换效果上。用来表示选项卡处于激活状态的类名。</p>
+            <h3>可选值</h3>
+            <p>字符串。默认为空字符串。可缺省。</p>
+            <h3>其他说明</h3>
+            <p>如果选项卡默认含有与<code>classAdd</code>匹配的类名，当插件会认为此选项卡默认处理展开（或激活）状态。</p>
+            <h3>示例</h3>
+            <p>假设4个选项卡，默认状态的类名是<code>.default</code>, 选中状态的类名是<code>.default .active</code>. 则<code>classAdd</code>的值就是<code>active</code>.</p>
+        </div>
+    </div>
+    <div id="classRemove" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classRemove</h2>
+            <h3>概述</h3>
+            <p>一般用在选项卡切换效果上。表示选项卡处于非激活状态时，被移除的默认类名。</p>
+            <h3>可选值</h3>
+            <p>字符串。默认为空字符串。可缺省。</p>
+            <h3>其他说明</h3>
+            <p>只有在类名的默认态和选中态是A↔B关系的时候，此参数才会使用。具体可参见下面的示例。</p>
+            <h3>示例</h3>
+            <p>假设4个选项卡，默认状态的类名是<code>.default</code>, 选中状态的类名是<code>.active</code>. 则<code>classRemove</code>的值就是<code>default</code>; 另外<code>classAdd</code>的值依旧是<code>active</code>. </p>
+        </div>
+    </div>
+    <div id="classPrefix" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classPrefix</h2>
+            <h3>概述</h3>
+            <p>表示一些匿名类名API的前缀名称。</p>
+            <h3>可选值</h3>
+            <p>字符串。默认为空字符串。可缺省。</p>
+            <h3>其他说明</h3>
+            <ol>
+            	<li>选项卡切换时候，时常会有“前进”或“后退”，甚至有时还有“播放”与“暂停”按钮。默认情况下，这些类名是没有前缀的。拿“前进”与“后退”按钮举例，如果<code>classPrefix</code>为空字符串，则插件生成（可参考<code><a href="#container">container</a></code>参数）的类名就是<code>"prev"</code>与<code>"next"</code>. 如果<code>classPrefix</code>值为<code>"example"</code>，则生成的“前进”与“后退”按钮的类名是<code>"example_prev"</code>和<code>"example_next"</code>.</li>
+                <li>如果对应的匿名类名参数(<code>classPrev</code>, <code>classNext</code><code>...</code>)设置了非<code>undefined</code>值，则这里的参数无效。也就是说，匿名类名参数权重大于这里的<code>classPrefix</code>。</li>
+            </ol>
+            <h3>示例</h3>
+            <p>跑马灯效果，如果不是无限切换，则其前进和后退按钮是有一个禁用状态的。默认类名是<code>disabled</code>. 如果<code>classPrefix</code>值为<code>example</code>, 则按钮禁用的类名就是<code>example_disabled</code>.</p>
+        </div>
+    </div>
+    <div id="attribute" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>attribute</h2>
+            <h3>概述</h3>
+            <p>powerSwitch插件采用的是HTML属性关联机制。将切换的面板或列表通过按钮上某个属性关联在一起。<code>attribute</code>表示的就是这个关联属性。</p>
+            <h3>可选值</h3>
+            <p>字符串。默认为<code>"data-rel"</code>.</p>
+            <h3>其他说明</h3>
+            <ol>
+            	<li>插件的元素的关联细则如下：
+                	<p>如果属性值比较简单，纯字母，例如<code>data-rel="example"</code>，则：</p>
+                	<ol>
+                    	<li>属性值<code>example</code>作为<code>id</code>选择器获取对应的切换元素 - <code>$("#example")</code>.</li>
+                        <li>属性值<code>example</code>作为<code>class</code>类名选择器获取对应的切换元素 - <code>$(".example")</code>.</li>
+                        <li>属性值<code>example</code>作为标签选择器获取对应的切换元素 - <code>$("example")</code>.</li>
+                    </ol>
+                    <p>如果属性值比较复杂，例如<code>data-rel="#example a"</code>，则：</p>
+                    <ol>
+                    	<li>属性值<code>#example a</code>直接作为选择器使用。</li>
+                    </ol>
+                </li>
+                <li>如果包装器元素上没有<code>attribute</code>对应的自定义属性，或者属性值为空字符串，则插件会使用元素的<code>href</code>属性<code>#</code>后面的值作为关联选择器，规则与上面一致。例如元素<code>href="#example"</code>, 则首先会去获取<code>$("#example")</code>这个元素。正如本API文档页面左侧的切换实现所示。之所以保留这个特性，是因为本身锚点技术就能够实现一些选项卡切换，且还有记忆功能（如本API文档页面随时刷新），是面向高级CSS技术的一种JS增强处理。</li>
+            </ol>
+            <h3>示例</h3>
+            <pre>&lt;a href="javascript:" id="switchPrev" data-refer="switchList">前进&lt;/a></pre>
+            <pre>&lt;ul>
+    &lt;li class="switchList">切换列表1&lt;/li>
+    &lt;li class="switchList">切换列表1&lt;/li>
+&lt;/ul></pre>
+            <pre>$("#switchPrev").powerSwitch({
+    attribute: "data-refer"            
+});</pre>
+            <p></p>
+        </div>
+    </div>
+    <div id="animation" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>animation</h2>
+            <h3>概述</h3>
+            <p>表示切换的动画类型</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>auto</code> 默认参数。表示自动。例如跑马灯效果为切换动画（<code>scroll</code>驱动或<code>translate</code>驱动），选项卡效果为直接的现实与隐藏。</li>
+                <li><code>none</code> 表示无动画效果。用在重置跑马灯默认效果适合使用。与下面的<code>display</code>作用类似。</li>
+                <li><code>display</code> 表示<code>display</code>属性驱动的显示与隐藏。</li>
+                <li><code>visibility</code> 表示<code>visibility</code>属性驱动的显示与隐藏。</li>
+                <li><code>translate</code> 表示动画形式的位移效果。</li>
+                <li><code>fade</code> 表示淡入淡出切换效果。</li>
+                <li><code>slide</code> 表示上下slide动画效果。一般用在手风琴切换效果上。可参见测试页面的下截图所示的效果：<p></p><img src="img/api-1.png" alt="手风琴效果"></li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>在某些情况下，一些动画类型的设置是会被忽略的。但这些忽略都是按照正常逻辑走的，因此，可以不必在意。</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="duration" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>duration</h2>
+            <h3>概述</h3>
+            <p>动画效果（如果有）执行的时间。</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li>数值，默认单位毫秒 - <code>ms</code>. 默认值为<code>250</code>. </li>
+                <li>字符串关键字。只能在<a href="#animation">animation</a>为<code>fade</code>和<code>slide</code>的时候有用。跟着jQuery关键字走，如<code>slow</code>, <code>normal</code>, <code>fast</code>.</li>
+            </ul>
+            <p></p>
+            <h3>其他说明</h3>
+            <p>字符串关键字还支持一个特殊的关键字——<code>"sync"</code>，也是在<a href="#animation">animation</a>为<code>fade</code>和<code>slide</code>的时候有用。表示元素隐藏和元素显示是同步的，也就是元素隐藏完毕之后，显示的元素才开始淡出。此效果可参见demo页面中<a href="../demo/yixun.php">易迅网</a>下图所示的交互：</p>
+            <img src="img/api-2.png" alt="淡入淡出同步">
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="container" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>container</h2>
+            <h3>概述</h3>
+            <p>表示容器元素。</p>
+            <h3>可选值</h3>
+            <p>容器元素。需要是jQuery包装器元素对象。原生的DOM对象可能会有问题。</p>
+            <h3>其他说明</h3>
+            <p>该属性只在两种情况下使用：</p>
+            <ol>
+            	<li>如果是跑马灯效果（也就是<code>powerFloat</code>方法绑定在“前进”、“后退”按钮上），且是位移动画效果，需要使用<code>container</code>参数表示切换的列表元素的容器。您可以指向列表元素们的直接父元素上，则使用CSS3 <code>transform</code>偏移实现效果；如果指向父级元素的再父级元素（高宽限制的那个元素），则使用该元素的<code>scroll</code>滚动实现动画效果（注：该效果性能不佳，会导致<code>duration</code>时间不准，不建议使用）。</li>
+                <li>有时候，传统的选项卡效果还需要一个“前进”、“后退”按钮，以及到还有“暂停”、“播放”这类需求。如下示意：
+                	<p></p>
+                	<img src="img/api-3.png" alt="前进、后退式选项卡">
+                	<p></p>
+                    本插件采用关联机制，一下子罩不住这些元素。此时，借助<code>container</code>参数，插件会在<code>container</code>后面创建“前进”、“后退”、“暂停”|“播放”这三个按钮，默认不显示，需CSS设置，生成的类名遵循匿名类名API以及<code>classPrefix</code>的双重作用。
+                    <p></p>
+                	<img src="img/api-4.png" alt="容器与动态元素">
+                </li>
+            </ol>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="autoTime" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>autoTime</h2>
+            <h3>概述</h3>
+            <p>表示自动播放的时间</p>
+            <h3>可选值</h3>
+            <p>数值。默认值是0. 表示不自动定时播放。 如果是其他数值，如果条件允许，就会自动播放。</p>
+            <h3>其他说明</h3>
+            <p><code>autoTime</code>有些情况下是无效的，例如，不能循环切换的跑马灯效果，这个应该好理解的，还有“更多”展开与收起效果等。</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="number" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>number</h2>
+            <h3>概述</h3>
+            <p>表示每次切换的数目</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>auto</code> 默认参数。表示自动。之所以这么设计是因为：选项卡、跑马灯等表示每次切换<code>1</code>个，但是，更多展开与收起效果默认是全部。具有不确定性。</li>
+                <li>数值 表示每次切换的数目。</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="hoverDelay" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>hoverDelay</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="toggle" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>toggle</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="onSwitch" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>onSwitch</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <!-- 匿名API -->
+    <div id="classDisabled" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classDisabled</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="classPrev" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classPrev</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="classNext" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classNext</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="classPlay" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classPlay</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+    <div id="classPause" class="zxx_api_detail">
+    	<div class="zxx_api_content">
+        	<h2>classPause</h2>
+            <h3>概述</h3>
+            <p>表示</p>
+            <h3>可选值</h3>
+            <ul>
+            	<li><code>horizontal</code> 默认参数。表示</li>
+                <li><code>vertical</code> 表示</li>
+            </ul>
+            <h3>其他说明</h3>
+            <p>暂无</p>
+            <h3>示例</h3>
+            <p>暂无</p>
+        </div>
+    </div>
+</div>
+
+<div class="zxx_footer">
+	<div class="zxx_constr">
+    	<p class="zxx_copyright">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </p>
+    </div>
+</div>
+
+<script src="../jquery.min.js"></script>
+<script src="../jquery-powerSwitch.js"></script>
+<script>
+if (!window.XMLHttpRequest) {
+	// IE6
+	setInterval(function() {
+		$("#zxxBody").css("height", $(window).height() - 113 - 65);		
+	}, 500);	
+}
+
+window.addEventListener("popstate", function() {
+    var href = location.href, hrefSplit = href.split("#");	
+	if (hrefSplit.length > 1) {
+		$("a[href='#"+ hrefSplit[hrefSplit.length - 1] +"']").trigger("click");
+	}
+});
+
+$("a[name='apiSwitch']").powerSwitch({
+	classAdd: "zxx_api_on",
+	animation: "visibility",
+	onSwitch: function() {
+		location.replace(this.href);	
+	}
+});
+</script>
+</body>
+</html>
