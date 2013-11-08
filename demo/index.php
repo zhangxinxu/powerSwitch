@@ -75,7 +75,7 @@
 $("#indexNav a").powerSwitch({
 	animation: "translate",
 	classAdd: "on",
-	classPrefix: "index",
+	classPrefix: "index_",
 	container: $("#indexControl"),
 	onSwitch: function(target) {
 		var eleLazyLoad = target.find("img, iframe").get(0), index = target.data("index");

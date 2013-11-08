@@ -36,7 +36,7 @@ img { border: 0; }
 
 .zxx_api_detail { position: absolute; height: 100%; left: 254px; right: 0; overflow: auto; visibility: hidden; }
 .zxx_api_content { padding: 20px; cursor: default; line-height: 1.5; }
-.zxx_api_content h2 { margin-top: 16px; margin-bottom: -5px; padding: 6px; background-color: #cad5eb; font-size: 16px; font-family: 'microsoft yahei'; text-shadow: 1px 1px #eee; }
+.zxx_api_content h2 { margin-top: 0; margin-bottom: -5px; padding: 6px; background-color: #cad5eb; font-size: 16px; font-family: 'microsoft yahei'; text-shadow: 1px 1px #eee; }
 .zxx_api_content h3 { margin: 20px 0 10px 5px; padding: 5px; background-color: #f0f3f9; font-size: 14px; color: #666; }
 .zxx_api_content p { margin: 10px; color: #666; }
 .zxx_api_content p:hover { color: #333; }
@@ -45,3 +45,10 @@ img { border: 0; }
 .zxx_api_content li:hover { color: #333; }
 code > a:hover { background-color: #f0f3f9; color: #333; text-decoration: none; }
 .zxx_api_content pre { display: block; padding: 10px; margin: 10px; border: 1px dotted #00c; color: #00c; font-family: "Lucida Console", Monaco, monospace; white-space: pre-wrap; word-wrap: break-word; }
+
+@media screen and (max-height:800px){
+	.zxx_api_title { margin-top: 12px; font-size: 12px; }
+	.zxx_api_a { line-height: 22px; font-size: 12px; }
+	.zxx_api_content h2 { font-size: 14px; }
+	.zxx_api_content h3 { font-size: 12px; }
+}

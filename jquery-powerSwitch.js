@@ -284,9 +284,26 @@
 		
 		// 一些全局类名		
 		$.each(["disabled", "prev", "play", "pause", "next"], function(index, key) {
-			var paramsKey = "class" + key.slice(0, 1).toUpperCase() + key.slice(1);
+			key = $.trim(key);
+			var upperKey = key.slice(0, 1).toUpperCase() + key.slice(1),
+				paramsKey = "class" + upperKey,
+				lastChar = params.classPrefix.slice(-1);
 			if (params[paramsKey] === undefined) {
-				params[paramsKey] = params.classPrefix? [params.classPrefix, key].join("_"): key;
+				if (params.classPrefix) {
+					// 根据classPrefix中是否含关键字符（下划线或短横线）做判断
+					if (/\-/g.test(params.classPrefix)) {
+						params[paramsKey] = lastChar == "-"? 
+							(params.classPrefix + key): [params.classPrefix, key].join("-");	
+					} else if (/_/g.test(params.classPrefix)) {
+						params[paramsKey] = lastChar == "_"? 
+							(params.classPrefix + key): [params.classPrefix, key].join("_");	
+					} else {
+						// 驼峰-大小写组合
+						params[paramsKey] = params.classPrefix + upperKey;
+					}
+				} else {
+					params[paramsKey] = key;
+				}
 			}
 		});
 		

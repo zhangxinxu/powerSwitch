@@ -17,7 +17,7 @@
         <a href="http://www.zhangxinxu.com/" class="zxx_logo">
             <img class="l" src="../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
         </a>
-        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-11-08 00:42</span></span>
     </div>
 </div>
 <div class="zxx_nav">
@@ -53,7 +53,7 @@
         <a href="#classPrev" class="zxx_api_a" name="apiSwitch">classPrev</a>
         <a href="#classNext" class="zxx_api_a" name="apiSwitch">classNext</a>
         <a href="#classPlay" class="zxx_api_a" name="apiSwitch">classPlay</a>
-        <a href="#classPause" class="zxx_api_a">classPause</a>
+        <a href="#classPause" class="zxx_api_a" name="apiSwitch">classPause</a>
         <h6 class="zxx_api_title">• 更多信息</h6>
         <a href="http://www.zhangxinxu.com/wordpress/?p=3758" class="zxx_api_a">相关文章</a>
     </div>
@@ -73,7 +73,7 @@
             <p>暂无</p>
         </div>
     </div>
-    <div id="eventType" class="zxx_api_detail" style="visibility: visible;">
+    <div id="eventType" class="zxx_api_detail">
     	<div class="zxx_api_content">
         	<h2>eventType</h2>
             <h3>概述</h3>
@@ -124,11 +124,12 @@
             <p>字符串。默认为空字符串。可缺省。</p>
             <h3>其他说明</h3>
             <ol>
-            	<li>选项卡切换时候，时常会有“前进”或“后退”，甚至有时还有“播放”与“暂停”按钮。默认情况下，这些类名是没有前缀的。拿“前进”与“后退”按钮举例，如果<code>classPrefix</code>为空字符串，则插件生成（可参考<code><a href="#container">container</a></code>参数）的类名就是<code>"prev"</code>与<code>"next"</code>. 如果<code>classPrefix</code>值为<code>"example"</code>，则生成的“前进”与“后退”按钮的类名是<code>"example_prev"</code>和<code>"example_next"</code>.</li>
+            	<li>选项卡切换时候，时常会有“前进”或“后退”，甚至有时还有“播放”与“暂停”按钮。默认情况下，这些类名是没有前缀的。拿“前进”与“后退”按钮举例，如果<code>classPrefix</code>为空字符串，则插件生成（可参考<code><a href="#container">container</a></code>参数）的类名就是<code>"prev"</code>与<code>"next"</code>. 如果<code>classPrefix</code>值为<code>"example_"</code>，则生成的“前进”与“后退”按钮的类名是<code>"example_prev"</code>和<code>"example_next"</code>.</li>
                 <li>如果对应的匿名类名参数(<code>classPrev</code>, <code>classNext</code><code>...</code>)设置了非<code>undefined</code>值，则这里的参数无效。也就是说，匿名类名参数权重大于这里的<code>classPrefix</code>。</li>
+                <li>类名前缀与类名关键字的连接方式有前缀自身决定。如果前缀中带有短横线或者下划线（无论是中间还是末尾），都为以这种方式连接；如果前缀就是个普通的单词，则采用大小写组合的驼峰命名法，例如，<code>classPrefix</code>值为<code>"example"</code>，则生成的类名是<code>"examplePrev"</code>. 因此，如果你希望生成的是<code>"example-prev"</code>的类名，务必<code>classPrefix</code>值为<code>example-</code>。但是，如果你想生成<code>"example-1-prev"</code>的类名，可以省略最后的连接符，即<code>classPrefix</code>值为<code>example-1</code>就可以了，因为<code>-</code>已经出现过，插件会认定这种连接就是你想要的连接方式；这种情况下，<code>example-1</code>和<code>example-1-</code>都是OK的。</li>
             </ol>
             <h3>示例</h3>
-            <p>跑马灯效果，如果不是无限切换，则其前进和后退按钮是有一个禁用状态的。默认类名是<code>disabled</code>. 如果<code>classPrefix</code>值为<code>example</code>, 则按钮禁用的类名就是<code>example_disabled</code>.</p>
+            <p>跑马灯效果，如果不是无限切换，则其前进和后退按钮是有一个禁用状态的。默认类名是<code>disabled</code>. 如果<code>classPrefix</code>值为<code>example-</code>, 则按钮禁用的类名就是<code>example-disabled</code>.</p>
         </div>
     </div>
     <div id="attribute" class="zxx_api_detail">
@@ -235,7 +236,7 @@
             <h3>概述</h3>
             <p>表示自动播放的时间</p>
             <h3>可选值</h3>
-            <p>数值。默认值是0. 表示不自动定时播放。 如果是其他数值，如果条件允许，就会自动播放。</p>
+            <p>数值。默认值是0. 表示不定时播放。 如果是其他数值，如果条件允许，就会自动播放。</p>
             <h3>其他说明</h3>
             <p><code>autoTime</code>有些情况下是无效的，例如，不能循环切换的跑马灯效果，这个应该好理解的，还有“更多”展开与收起效果等。</p>
             <h3>示例</h3>
@@ -253,7 +254,7 @@
                 <li>数值 表示每次切换的数目。</li>
             </ul>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>基本上用在跑马灯切换效果上。一次位移多个列表元素。</p>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -262,14 +263,11 @@
     	<div class="zxx_api_content">
         	<h2>hoverDelay</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示鼠标经过延时触发的时间。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>数值。默认值是<code>200</code>, 单位毫秒。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>只有当<code><a href="#eventType">eventType</a></code>为<code>hover</code>或<code>mouseover</code>时候，此参数才有效。</p>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -278,14 +276,11 @@
     	<div class="zxx_api_content">
         	<h2>toggle</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示切换元素是否可以连续显隐切换。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>布尔值。<code>true/false</code>. 默认值为<code>"false"</code>. 表示只能展开，不能收起。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>一般用在“更多-展开|收起”效果上。</p>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -294,14 +289,38 @@
     	<div class="zxx_api_content">
         	<h2>onSwitch</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示切换后触发的回调事件。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>函数。默认值<code>$.noop</code>. 该回调方法的上下文<code>this</code>就是点击（或鼠标经过）的按钮元素或点击（或鼠标经过）的选项卡元素。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>该回调函数的参数略复杂，根据切换的类型不同，支持的参数也有所差异：</p>
+            <ul>
+            	<li>首先函数中的<code>this</code>表示是事件触发源元素。例如，点击“下一页”按钮，则：
+                	<pre>onSwitch: function() {
+    // this就是指的这个“下一页”按钮元素，为原生DOM元素                    
+}</pre>
+                </li>
+                <li>如果是传统的选项卡，则支持<code>3</code>个参数，示意如下：
+                	<pre>onSwitch: function(panelShow, tabHide, panelHide) {
+    // this就是指的当前点击的选项卡元素，为原生DOM元素                    
+    // panelShow指的是当前显示的面板元素，jQuery对象元素
+    // tabHide表示当前隐藏的选项卡元素，jQuery对象元素
+    // panelHide表示当前隐藏的面板元素，jQuery对象元素
+}</pre>
+                </li>
+                <li>如果是<code>toggle</code>切换类型，支持<code>2</code>个参数，如下：
+                	<pre>onSwitch: function(target, display) {
+    // this为事件触发的元素
+    // target表示显隐切换的元素
+    // display表示当前对应切换元素是显示呢，还是隐藏，是Boolean类型值。
+}</pre></li>
+                <li>如果是其他切换类型，支持<code>1</code>个参数。如下：
+                <pre>onSwitch: function(targets) {
+    // this为事件触发的元素
+    // targets表示显示，或位移的元素jQuery包装器集合，其数目由<code><a href="#number">number</a></code>值大小决定。
+}</pre>
+                </li>
+            </ul>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -311,30 +330,36 @@
     	<div class="zxx_api_content">
         	<h2>classDisabled</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示按钮禁用的类名</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>字符串。默认匿名，也就是<code>undefined</code>未定义。可以是空字符串或其他字符串。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>一般用在跑马灯效果上（有时<code>toggle</code>效果也可以使用）。当列表切换到尽头的时候，例如末尾，则“前进”按钮处于禁用状态。</p>
+            <p>类名使用规则如下：</p>
+            <ol>
+            	<li>优先使用<code>classDisabled</code>值，如果该值未定义，下面继续；</li>
+                <li>如果<code><a href="classPrefix">classPrefix</a></code>设置了值，则使用组合类名；否则，下面继续；</li>
+                <li>使用类名<code>disabled</code>.</li>
+            </ol>
+            <p><strong>重要：</strong><code>classDisabled</code>还有一个非常重要的用法，就是空字符串<code>""</code>用法，在跑马灯效果中，默认切换是有尽头的；如果您希望实现无限切换的效果，只需要额外设置<code>classDisabled: ''</code>（<code>null</code>, <code>false</code>等值其实也可以）就可以了-顾名思意，消除禁用状态。</p>
             <h3>示例</h3>
-            <p>暂无</p>
+            <p>例如，</p>
+            <pre>$(".example").powerSwitch({
+    classDisabled: "example-disabled"            
+});</pre>
+			<p>则，遭遇禁用状态的时候，按钮的类名可能就是<code>example example-disabled</code>.</p>
         </div>
     </div>
     <div id="classPrev" class="zxx_api_detail">
     	<div class="zxx_api_content">
         	<h2>classPrev</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示前进（或上一项）按钮的类名。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>字符串。默认匿名，也就是<code>undefined</code>未定义。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>只有在选项卡切换，同时需要前进，后退效果的时候使用。指定<code><a href="#container">container</a></code>就可以生成此元素。</p>
+            <p>如果该API未定义、<code>classPrefix</code>不设置，则按钮的类名就是<code>prev</code>. 如果该API未定义，<code>classPrefix</code>有值，则按钮类名应用<code><a href="#classPrefix">classPrefix</a></code>命名规则。如果该API设置了值，则类名就是该值。</p>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -343,14 +368,12 @@
     	<div class="zxx_api_content">
         	<h2>classNext</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示后退（或下一项）按钮的类名。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>字符串。默认匿名，也就是<code>undefined</code>未定义。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>只有在选项卡切换，同时需要前进，后退效果的时候使用。指定<code><a href="#container">container</a></code>就可以生成此元素。</p>
+            <p>如果该API未定义、<code>classPrefix</code>不设置，则按钮的类名就是<code>next</code>. 如果该API未定义，<code>classPrefix</code>有值，则按钮类名应用<code><a href="#classPrefix">classPrefix</a></code>命名规则。如果该API设置了值，则类名就是该值。</p>
             <h3>示例</h3>
             <p>暂无</p>
         </div>
@@ -359,32 +382,30 @@
     	<div class="zxx_api_content">
         	<h2>classPlay</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示播放按钮的类名。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>字符串。默认匿名，也就是<code>undefined</code>未定义。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>只有在选项卡切换，同时需要播放、暂停效果的时候使用。指定<code><a href="#container">container</a></code>就可以生成此元素。该元素实际和暂停元素是同一个元素。只是不同状态而已。默认是暂停状态。</p>
+            <p>如果该API未定义、<code>classPrefix</code>不设置，则按钮的类名就是<code>play</code>. 如果该API未定义，<code>classPrefix</code>有值，则按钮类名应用<code><a href="#classPrefix">classPrefix</a></code>命名规则。如果该API设置了值，则类名就是该值。</p>
             <h3>示例</h3>
-            <p>暂无</p>
+            <p><a href="../index.html">测试页面</a>下面这个效果：</p>
+            <p><img src="img/api-3.png" alt="播放、暂停式选项卡"></p>
         </div>
     </div>
     <div id="classPause" class="zxx_api_detail">
     	<div class="zxx_api_content">
         	<h2>classPause</h2>
             <h3>概述</h3>
-            <p>表示</p>
+            <p>表示暂停按钮的类名。</p>
             <h3>可选值</h3>
-            <ul>
-            	<li><code>horizontal</code> 默认参数。表示</li>
-                <li><code>vertical</code> 表示</li>
-            </ul>
+            <p>字符串。默认匿名，也就是<code>undefined</code>未定义。</p>
             <h3>其他说明</h3>
-            <p>暂无</p>
+            <p>只有在选项卡切换，同时需要播放、暂停效果的时候使用。指定<code><a href="#container">container</a></code>就可以生成此元素。该元素实际和暂停元素是同一个元素。只是不同状态而已。默认是暂停状态。</p>
+            <p>如果该API未定义、<code>classPrefix</code>不设置，则按钮的类名就是<code>pause</code>. 如果该API未定义，<code>classPrefix</code>有值，则按钮类名应用<code><a href="#classPrefix">classPrefix</a></code>命名规则。如果该API设置了值，则类名就是该值。</p>
             <h3>示例</h3>
-            <p>暂无</p>
+            <p><a href="../index.html">测试页面</a>下面这个效果：</p>
+            <p><img src="img/api-3.png" alt="播放、暂停式选项卡"></p>
         </div>
     </div>
 </div>

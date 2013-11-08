@@ -295,7 +295,7 @@ var caroSwitchCall = function(lists) {
 caroSwitchCall($("#caroSlide li").slice(0, 5));
 $(".caroSlideBtn").powerSwitch({
 	number: 5,
-	classPrefix: "xunlei_caro",
+	classPrefix: "xunlei_caro_",
 	container: $("#caroSlide"),
 	onSwitch: caroSwitchCall
 });
