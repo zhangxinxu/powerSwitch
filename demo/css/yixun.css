@@ -86,7 +86,7 @@
 }
 .yixun_cheap_link {
 	width: 85px; height: 16px; line-height: 16px;
-	padding: 10px 0;
+	padding: 10px 0; *padding-top: 13px;
 	color: #fff;
 	text-align: center;
 	font-size: 14px; font-family: \5FAE\8F6F\96C5\9ED1;
@@ -96,7 +96,7 @@
 .yixun_corl_wh {
 	position: absolute;
 	width: 0; height: 0;
-	margin-top: 6px; *margin-top: 8px;
+	margin-top: 6px; *margin-top: 3px;
 	overflow: hidden;
 	font-size: 0;
 }

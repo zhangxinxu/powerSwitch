@@ -659,6 +659,8 @@
 							break	
 						}
 					}
+					
+					return false;
 				});			
 			}
 			

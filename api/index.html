@@ -426,13 +426,14 @@
 <script src="../jquery-powerSwitch.js"></script>
 <script>
 if (!window.XMLHttpRequest) {
-	// IE6
+	$("#zxxBody").css("height", $(window).height() - 113 - 65);	
+	// IE6高度
 	setInterval(function() {
 		$("#zxxBody").css("height", $(window).height() - 113 - 65);		
 	}, 500);	
 }
 
-window.addEventListener("popstate", function() {
+window.addEventListener && window.addEventListener("popstate", function() {
     var href = location.href, hrefSplit = href.split("#");	
 	if (hrefSplit.length > 1) {
 		$("a[href='#"+ hrefSplit[hrefSplit.length - 1] +"']").trigger("click");
@@ -442,8 +443,12 @@ window.addEventListener("popstate", function() {
 $("a[name='apiSwitch']").powerSwitch({
 	classAdd: "zxx_api_on",
 	animation: "visibility",
-	onSwitch: function() {
-		location.replace(this.href);	
+	onSwitch: function(target) {
+		location.replace(this.href);
+		// IE6 宽度
+		if (!window.XMLHttpRequest) {
+			target.css("width", $(window).width() - 254);	
+		}
 	}
 });
 </script>

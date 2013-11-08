@@ -41,7 +41,7 @@
 	float: right;
 }
 .jd_nav_x {
-	_width: 100%;
+	height: 30px;
 	margin: 0;
 	overflow: hidden;
 	position: relative;

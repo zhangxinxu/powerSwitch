@@ -115,7 +115,8 @@
 	width: 13px; height: 13px;
 	background-color: #fff;
 	background-position: -220px -120px;
-	vertical-align: -2px;
+	vertical-align: -2px; *vertical-align: 0;
+	overflow: hidden;
 }
 .xunlei_rank_status {
 	margin-left: 20px;
@@ -249,15 +250,15 @@
 	color: #999;
 	overflow: hidden;
 }
-.xunlei_sche_show li{ height:26px; padding-left:20px; position:relative; left:-240px;}
+.xunlei_sche_show li{ height:26px; padding-left:20px; position:relative;}
 .xunlei_sche_show a { margin-left: 10px; color: #333; }
-.xunlei_sche_show .on li:nth-child(1) {-webkit-animation:aniName 10s ease-in-out infinite; animation:aniName 10s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(2) {-webkit-animation:aniName 10s .1s ease-in-out infinite; animation:aniName 10s .1s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(3) {-webkit-animation:aniName 10s .2s ease-in-out infinite; animation:aniName 10s .2s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(4) {-webkit-animation:aniName 10s .3s ease-in-out infinite; animation:aniName 10s .3s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(5) {-webkit-animation:aniName 10s .4s ease-in-out infinite; animation:aniName 10s .4s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(6) {-webkit-animation:aniName 10s .5s ease-in-out infinite; animation:aniName 10s .5s ease-in-out infinite;}
-.xunlei_sche_show .on li:nth-child(7) {-webkit-animation:aniName 10s .6s ease-in-out infinite; animation:aniName 10s .6s ease-in-out infinite;}
+.xunlei_sche_show .on li:nth-child(1) {-webkit-animation:aniName 10s ease-in-out infinite both; animation:aniName 10s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(2) {-webkit-animation:aniName 10s .1s ease-in-out infinite both; animation:aniName 10s .1s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(3) {-webkit-animation:aniName 10s .2s ease-in-out infinite both; animation:aniName 10s .2s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(4) {-webkit-animation:aniName 10s .3s ease-in-out infinite both; animation:aniName 10s .3s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(5) {-webkit-animation:aniName 10s .4s ease-in-out infinite both; animation:aniName 10s .4s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(6) {-webkit-animation:aniName 10s .5s ease-in-out infinite both; animation:aniName 10s .5s ease-in-out infinite both;}
+.xunlei_sche_show .on li:nth-child(7) {-webkit-animation:aniName 10s .6s ease-in-out infinite both; animation:aniName 10s .6s ease-in-out infinite both;}
 @-webkit-keyframes aniName {
 	0%{opacity:0; left:-240px;background:rgba(217,217,217,1)}
 	5%{background:rgba(217,217,217,1)}

@@ -29,7 +29,8 @@ img { vertical-align: bottom; }
 	display: inline-block;
 	width: 9px; height: 9px;
 	*margin: 0 2px;
-	border-radius: 9px;	
+	border-radius: 9px;
+	overflow: hidden;
 }
 .tb_slide_btn {
 	position: absolute; bottom: 0; left: 0; bottom: 10px;
@@ -81,8 +82,8 @@ img { vertical-align: bottom; }
 	margin-top: -20px;
 	background-color: #666;
 	background-color: rgba(0,0,0,.3);
+	*background-color: #999;
 	visibility: hidden;
-	_visibility: visible;
 }
 .tb_slide_prev {
 	background-position: -190px 8px;
@@ -111,8 +112,8 @@ img { vertical-align: bottom; }
 	overflow: hidden;
 }
 .tb_tab_notice_ul {
-	margin-left: -1px;
-	margin-right: -1px;
+	margin-left: -1px; margin-right: -1px;
+	_width: 300px;
 	*zoom: 1;
 }
 .tb_tab_notice_li {
@@ -208,6 +209,7 @@ img { vertical-align: bottom; }
 	background: url(../img/taobao/corner.png) no-repeat 0 -6px;
 	-webkit-transition: -webkit-transform .1s;
 	        transition: -webkit-transform .1s;
+	overflow: hidden;
 }
 .tb_service_on .tb_service_corner {
 	-webkit-transform: rotate(180deg);
