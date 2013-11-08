@@ -12,3 +12,4 @@
 <meta name="author" content="张鑫旭, zhangxinxu" />
 <title>jQuery万能切换插件powerSwitch实例页面之<?php echo $key; ?> » 张鑫旭-鑫空间-鑫生活</title>
 <link rel="stylesheet" href="./css/common.css" />
+<link rel="shortcut icon" href="../zxx_ico.ico" />
