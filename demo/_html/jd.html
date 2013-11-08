@@ -1,27 +1,52 @@
 <!doctype html>
 <html>
 <head>
-<?php 
-	$key = '京东商城';
-	include('_include/header.php'); 
-?>
-<link rel="stylesheet" href="./css/jd.css" />
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta http-equiv="description" content="jQuery万能切换插件powerSwitch实例页面之京东商城 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="jQuery万能切换插件powerSwitch实例页面之京东商城" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>jQuery万能切换插件powerSwitch实例页面之京东商城 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/common.css" /><link rel="stylesheet" href="../css/jd.css" />
 <style>
 .zxx_body .zxx_constr {
 	width: 1210px;
-	background: url("./img/jd/bg.png") no-repeat 0 12px;
+	background: url("../img/jd/bg.png") no-repeat 0 12px;
 }
 </style>
 </head>
 
 <body>
-<?php 
-	include('_include/nav.php'); 
-?>
 
+<div class="zxx_header">
+    <div class="zxx_constr">
+        <a href="http://www.zhangxinxu.com/" class="zxx_logo">
+            <img class="l" src="../../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+        </a>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+        <a href="../../api/index.html" class="zxx_api" title="访问插件API使用">API</a>
+    </div>
+</div>
+
+<div class="zxx_nav">
+	<div class="zxx_constr">
+    	<ul class="zxx_nav_ul">
+        	<li class="zxx_nav_li"><a href="index.html" class="zxx_nav_a">首页</a></li>
+            <li class="zxx_nav_li"><a href="xunlei.html" class="zxx_nav_a">迅雷动漫</a></li>
+            <li class="zxx_nav_li"><a href="taobao.html" class="zxx_nav_a">淘宝网</a></li>
+            <li class="zxx_nav_li"><a href="jd.html" class="zxx_nav_a zxx_nav_on">京东商城</a></li>
+            <li class="zxx_nav_li"><a href="yixun.html" class="zxx_nav_a">易迅网</a></li>
+            <li class="zxx_nav_sp">
+            	<a href="../../index.html" class="zxx_gbtn">测试页面</a>&nbsp;
+        		<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn" title="visit GitHub">Fork Me</a>
+           	</li>
+        </ul>
+    </div>
+</div>
 <div class="zxx_body">
 	<div class="zxx_constr">
-    	<!--  body of jd.php -->
+    	<!--  body of jd.html -->
         <div class="jd_body">
         	<div id="jdAdSlide" class="jd_ad_slide">
             	<img src="http://img13.360buyimg.com/da/g14/M00/1A/02/rBEhVlJ5oCUIAAAAAAE4O585pSAAAFGKgINDgcAAThT749.jpg" class="jd_ad_img">
@@ -43,10 +68,10 @@
                 </h4>
                 <div class="jd_service_con">
                 	<s id="pointLine" class="jd_point_line"><i class="jd_point_cor"></i></s>
-                    <img id="servImage1" src="./img/jd/exp-tel.png" class="jd_service_img" style="display:block;">
-                    <img id="servImage2" src="./img/jd/exp-trval.png" class="jd_service_img">
-                    <img id="servImage3" src="./img/jd/exp-ticket.png" class="jd_service_img">
-                    <img id="servImage4" src="./img/jd/exp-game.png" class="jd_service_img">
+                    <img id="servImage1" src="../img/jd/exp-tel.png" class="jd_service_img" style="display:block;">
+                    <img id="servImage2" src="../img/jd/exp-trval.png" class="jd_service_img">
+                    <img id="servImage3" src="../img/jd/exp-ticket.png" class="jd_service_img">
+                    <img id="servImage4" src="../img/jd/exp-game.png" class="jd_service_img">
                 </div>
             </div>
         </div>
@@ -55,10 +80,20 @@
     </div>
 </div>
 
-<?php 
-	include('_include/footer.php'); 
-?>
-<script>
+<div class="zxx_footer">
+	<div class="zxx_constr">
+    	<p class="zxx_copyright">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </p>
+    </div>
+</div>
+
+<script src="../../jquery.min.js"></script>
+<script src="../../jquery-powerSwitch.js"></script><script>
 // 大的图片广告
 // 根据图片创建id,按钮元素等，实际开发建议使用JSON数据类似
 var htmlAdBtn = '';

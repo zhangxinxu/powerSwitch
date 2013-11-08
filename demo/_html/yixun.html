@@ -1,27 +1,52 @@
 <!doctype html>
 <html>
 <head>
-<?php 
-	$key = '易迅网';
-	include('_include/header.php'); 
-?>
-<link rel="stylesheet" href="./css/yixun.css" />
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta http-equiv="description" content="jQuery万能切换插件powerSwitch实例页面之易迅网 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="jQuery万能切换插件powerSwitch实例页面之易迅网" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>jQuery万能切换插件powerSwitch实例页面之易迅网 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/common.css" /><link rel="stylesheet" href="../css/yixun.css" />
 <style>
 .zxx_body .zxx_constr {
 	width: 1190px;
-	background: url("./img/yixun/bg.png") no-repeat 0 12px;
+	background: url("../img/yixun/bg.png") no-repeat 0 12px;
 }
 </style>
 </head>
 
 <body>
-<?php 
-	include('_include/nav.php'); 
-?>
 
+<div class="zxx_header">
+    <div class="zxx_constr">
+        <a href="http://www.zhangxinxu.com/" class="zxx_logo">
+            <img class="l" src="../../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+        </a>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+        <a href="../../api/index.html" class="zxx_api" title="访问插件API使用">API</a>
+    </div>
+</div>
+
+<div class="zxx_nav">
+	<div class="zxx_constr">
+    	<ul class="zxx_nav_ul">
+        	<li class="zxx_nav_li"><a href="index.html" class="zxx_nav_a">首页</a></li>
+            <li class="zxx_nav_li"><a href="xunlei.html" class="zxx_nav_a">迅雷动漫</a></li>
+            <li class="zxx_nav_li"><a href="taobao.html" class="zxx_nav_a">淘宝网</a></li>
+            <li class="zxx_nav_li"><a href="jd.html" class="zxx_nav_a">京东商城</a></li>
+            <li class="zxx_nav_li"><a href="yixun.html" class="zxx_nav_a zxx_nav_on">易迅网</a></li>
+            <li class="zxx_nav_sp">
+            	<a href="../../index.html" class="zxx_gbtn">测试页面</a>&nbsp;
+        		<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn" title="visit GitHub">Fork Me</a>
+           	</li>
+        </ul>
+    </div>
+</div>
 <div class="zxx_body">
 	<div class="zxx_constr">
-    	<!--  body of yixun.php -->
+    	<!--  body of yixun.html -->
         <div class="yixun_body">
         	<div class="yixun_main">
             	<div id="yixunAdSlide" class="yixun_ad_slide">
@@ -58,8 +83,8 @@
                     <a href="javascript:" class="yixun_cheap_link cheapLink" data-rel="cheapImg2" data-txt="日间抢购，全网底价">下期预告<i class="yixun_corr_wh"></i>&nbsp;</a>
                     <a href="javascript:" class="yixun_cheap_link cheapLink" data-rel="cheapImg1" data-txt="下期预告，明日9点" style="display:none;">&nbsp;<i class="yixun_corl_wh"></i>返回抢购</a>
                 </div>
-                <img id="cheapImg1" src="./img/yixun/cheap-1.png" class="yixun_cheap_img">
-                <img id="cheapImg2" src="./img/yixun/cheap-2.png" class="yixun_cheap_img" style="display:none;">
+                <img id="cheapImg1" src="../img/yixun/cheap-1.png" class="yixun_cheap_img">
+                <img id="cheapImg2" src="../img/yixun/cheap-2.png" class="yixun_cheap_img" style="display:none;">
             </div>
             <!-- 右侧 -->       	
             <div class="yixun_side">
@@ -104,8 +129,8 @@
                 <!-- 客户端，微信等 -->
                 <div class="yixun_code">
                 	<div class="yixun_code_slide">
-                    	 <img id="codeImg1" src="./img/yixun/code-1.png" class="yixun_code_img">
-                		<img id="codeImg2" src="./img/yixun/code-2.png" class="yixun_code_img" style="display:none;">
+                    	 <img id="codeImg1" src="../img/yixun/code-1.png" class="yixun_code_img">
+                		<img id="codeImg2" src="../img/yixun/code-2.png" class="yixun_code_img" style="display:none;">
                     </div>
                     <div id="codeBtnX" class="yixun_dot_x">
                     	<a href="javascript:" class="on" data-rel="codeImg1">•</a>
@@ -119,10 +144,20 @@
     </div>
 </div>
 
-<?php 
-	include('_include/footer.php'); 
-?>
-<script>
+<div class="zxx_footer">
+	<div class="zxx_constr">
+    	<p class="zxx_copyright">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </p>
+    </div>
+</div>
+
+<script src="../../jquery.min.js"></script>
+<script src="../../jquery-powerSwitch.js"></script><script>
 // 根据JSON数据生成slide广告
 var htmlAdSlide = '', htmlAdBtns = '<div id="yixunAdBtn" class="yixun_ad_btn">';
 $.each(dataAdSlide, function(index, obj) {

@@ -1,28 +1,53 @@
 <!doctype html>
 <html>
 <head>
-<?php 
-	$key = '首页';
-	include('_include/header.php'); 
-?>
-<link rel="stylesheet" href="./css/index.css" />
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta http-equiv="description" content="jQuery万能切换插件powerSwitch实例页面之首页 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="jQuery万能切换插件powerSwitch实例页面之首页" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>jQuery万能切换插件powerSwitch实例页面之首页 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/common.css" /><link rel="stylesheet" href="../css/index.css" />
 </head>
 
 <body>
-<?php 
-	include('_include/nav.php'); 
-?>
 
+<div class="zxx_header">
+    <div class="zxx_constr">
+        <a href="http://www.zhangxinxu.com/" class="zxx_logo">
+            <img class="l" src="../../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+        </a>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+        <a href="../../api/index.html" class="zxx_api" title="访问插件API使用">API</a>
+    </div>
+</div>
+
+<div class="zxx_nav">
+	<div class="zxx_constr">
+    	<ul class="zxx_nav_ul">
+        	<li class="zxx_nav_li"><a href="index.html" class="zxx_nav_a zxx_nav_on">首页</a></li>
+            <li class="zxx_nav_li"><a href="xunlei.html" class="zxx_nav_a">迅雷动漫</a></li>
+            <li class="zxx_nav_li"><a href="taobao.html" class="zxx_nav_a">淘宝网</a></li>
+            <li class="zxx_nav_li"><a href="jd.html" class="zxx_nav_a">京东商城</a></li>
+            <li class="zxx_nav_li"><a href="yixun.html" class="zxx_nav_a">易迅网</a></li>
+            <li class="zxx_nav_sp">
+            	<a href="../../index.html" class="zxx_gbtn">测试页面</a>&nbsp;
+        		<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn" title="visit GitHub">Fork Me</a>
+           	</li>
+        </ul>
+    </div>
+</div>
 <div class="zxx_body">
 	<div class="zxx_constr">
-    	<!--  body of index.php -->
+    	<!--  body of index.html -->
         <div class="index_box">
         	<div id="indexSlide1" class="index_slide index_explain">
             	<span class="index_text">好苦恼啊！首页应该放些什么东西呢？<br>
                 要不，什么都来一点？幸福好滋味！^_^</span><i class="index_valign"></i>
             </div>
             <div id="indexSlide2" class="index_slide index_hidden">
-            	<img data-src="./img/index/hello.jpg" alt="大家好">
+            	<img data-src="../img/index/hello.jpg" alt="大家好">
             </div>
             <div id="indexSlide3" class="index_slide index_explain index_hidden">
             	<span class="index_text">喂喂喂，就一张红白花花的图，好平淡哦~<br>
@@ -30,13 +55,13 @@
             </div>
             <div id="indexSlide4" class="index_slide index_hidden">
             	<p class="index_caption">国庆节野钓渔获，超赞的野生鲫鱼！Photo by <a href="http://www.zhangxinxu.com/" class="index_caption_a">zhangxinxu</a></p>
-            	<img data-src="./img/index/hello.jpg" alt="大家好">
+            	<img data-src="../img/index/hello.jpg" alt="大家好">
             </div>
             <div id="indexSlide5" class="index_slide index_explain index_hidden">
             	<span class="index_text">或者来段魅惑的描述性文字？</span><i class="index_valign"></i>
             </div>
             <div id="indexSlide6" class="index_slide index_descr index_hidden">
-            	<img data-src="./img/index/hello.jpg" class="index_anim_img" alt="大家好">
+            	<img data-src="../img/index/hello.jpg" class="index_anim_img" alt="大家好">
             	<div class="index_cell">
                 	<div class="index_article">
                         <h4>金秋野钓记</h4>
@@ -68,10 +93,20 @@
     </div>
 </div>
 
-<?php 
-	include('_include/footer.php'); 
-?>
-<script>
+<div class="zxx_footer">
+	<div class="zxx_constr">
+    	<p class="zxx_copyright">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </p>
+    </div>
+</div>
+
+<script src="../../jquery.min.js"></script>
+<script src="../../jquery-powerSwitch.js"></script><script>
 $("#indexNav a").powerSwitch({
 	animation: "translate",
 	classAdd: "on",

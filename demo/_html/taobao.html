@@ -1,27 +1,52 @@
 <!doctype html>
 <html>
 <head>
-<?php 
-	$key = '淘宝网';
-	include('_include/header.php'); 
-?>
-<link rel="stylesheet" href="./css/taobao.css" />
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta http-equiv="description" content="jQuery万能切换插件powerSwitch实例页面之淘宝网 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="jQuery万能切换插件powerSwitch实例页面之淘宝网" />
+<meta name="keywords" content="powerSwitch, jQuery, 插件" />
+<meta name="author" content="张鑫旭, zhangxinxu" />
+<title>jQuery万能切换插件powerSwitch实例页面之淘宝网 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/common.css" /><link rel="stylesheet" href="../css/taobao.css" />
 <style>
 .zxx_body .zxx_constr {
 	width: 1190px;
-	background: url("./img/taobao/bg.png") no-repeat 0 12px;
+	background: url("../img/taobao/bg.png") no-repeat 0 12px;
 }
 </style>
 </head>
 
 <body>
-<?php 
-	include('_include/nav.php'); 
-?>
 
+<div class="zxx_header">
+    <div class="zxx_constr">
+        <a href="http://www.zhangxinxu.com/" class="zxx_logo">
+            <img class="l" src="../../index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+        </a>
+        <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-31 19:46</span></span>
+        <a href="../../api/index.html" class="zxx_api" title="访问插件API使用">API</a>
+    </div>
+</div>
+
+<div class="zxx_nav">
+	<div class="zxx_constr">
+    	<ul class="zxx_nav_ul">
+        	<li class="zxx_nav_li"><a href="index.html" class="zxx_nav_a">首页</a></li>
+            <li class="zxx_nav_li"><a href="xunlei.html" class="zxx_nav_a">迅雷动漫</a></li>
+            <li class="zxx_nav_li"><a href="taobao.html" class="zxx_nav_a zxx_nav_on">淘宝网</a></li>
+            <li class="zxx_nav_li"><a href="jd.html" class="zxx_nav_a">京东商城</a></li>
+            <li class="zxx_nav_li"><a href="yixun.html" class="zxx_nav_a">易迅网</a></li>
+            <li class="zxx_nav_sp">
+            	<a href="../../index.html" class="zxx_gbtn">测试页面</a>&nbsp;
+        		<a href="https://github.com/zhangxinxu/powerSwitch" class="zxx_rbtn" title="visit GitHub">Fork Me</a>
+           	</li>
+        </ul>
+    </div>
+</div>
 <div class="zxx_body">
 	<div class="zxx_constr zxx_taobao_constr">
-    	<!--  body of taobao.php -->
+    	<!--  body of taobao.html -->
         <div class="tb_top_body">
         	<div class="tb_main_slide">
             	<div id="adSlideBox" class="tb_slide_box tb_slide_ad">
@@ -68,7 +93,7 @@
                         <i class="tb_slide_line_v"></i><i class="tb_slide_line_h"></i>
                     </div>
                     <div id="tmallSlideImg5" class="tb_slide_tmall" style="display:none;">
-                    	<img src="./img/taobao/brand.png">
+                    	<img src="../img/taobao/brand.png">
                     </div>
                     <div id="tmallSlideBtn" class="tb_slide_btn">
                     	<a href="javascript:" class="tb_slide_on" data-rel="tmallSlideImg1"></a>
@@ -126,7 +151,7 @@
                         <li class="tb_tab_panel_li"><a href="#" class="tb_tab_panel_a">中国网络捐赠研究报告！</a></li>
                     </ul>
                 </div>
-                <img class="tb_my_info" src="./img/taobao/my-info.png">
+                <img class="tb_my_info" src="../img/taobao/my-info.png">
                 <div class="tb_service">
                 	<div id="servBtnBox" class="tb_service_x">
                     	<a href="javascript:" class="tb_service_li servBrnBind" data-rel="expTel">话费<i class="tb_service_corner"></i></a><!-- tb_service_on -->
@@ -143,10 +168,10 @@
                     </div>
                     <div id="servFloat" class="tb_service_fl"><!-- add active -->
                     	<a href="javascript:" id="servFloatShut" class="tb_service_fl_shut" title="关闭"></a>
-                        <img id="expTel" src="./img/taobao/exp-tel.png" style="display: none;">
-                        <img id="expGame" src="./img/taobao/exp-game.png" style="display: none;">
-                        <img id="expTrval" src="./img/taobao/exp-trval.png" style="display: none;">
-                        <img id="expSafety" src="./img/taobao/exp-safety.png" style="display: none;">
+                        <img id="expTel" src="../img/taobao/exp-tel.png" style="display: none;">
+                        <img id="expGame" src="../img/taobao/exp-game.png" style="display: none;">
+                        <img id="expTrval" src="../img/taobao/exp-trval.png" style="display: none;">
+                        <img id="expSafety" src="../img/taobao/exp-safety.png" style="display: none;">
                     </div>
                 </div>
             </div>
@@ -157,10 +182,20 @@
     </div>
 </div>
 
-<?php 
-	include('_include/footer.php'); 
-?>
-<script>
+<div class="zxx_footer">
+	<div class="zxx_constr">
+    	<p class="zxx_copyright">
+            Copyright &copy; <a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=3758">该篇相关文章</a>
+            |
+            <a href="https://github.com/zhangxinxu/powerSwitch">GitHub地址</a>
+        </p>
+    </div>
+</div>
+
+<script src="../../jquery.min.js"></script>
+<script src="../../jquery-powerSwitch.js"></script><script>
 // IE10+ ...
 if (typeof history.pushState !== "function") {
 	document.body.className = "fuck-ie6-ie9";
