@@ -9,9 +9,9 @@ How to use?
 
 APIs and Demos
 ------------------
-Test Page: [http://rawgithub.com/zhangxinxu/powerSwitch/master/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/index.html)
-Demo Pages: [http://rawgithub.com/zhangxinxu/powerSwitch/master/demo/_html/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/demo/_html/index.html)
-API Document: [http://rawgithub.com/zhangxinxu/powerSwitch/master/api/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/api/index.html)
+Test Page: [http://rawgithub.com/zhangxinxu/powerSwitch/master/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/index.html)<br>
+Demo Pages: [http://rawgithub.com/zhangxinxu/powerSwitch/master/demo/_html/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/demo/_html/index.html)<br>
+API Document: [http://rawgithub.com/zhangxinxu/powerSwitch/master/api/index.html](http://rawgithub.com/zhangxinxu/powerSwitch/master/api/index.html)<br>
 
 You can [visit here](http://www.zhangxinxu.com/wordpress/?p=3758) to get more information.
 
