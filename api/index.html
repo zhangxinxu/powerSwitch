@@ -459,7 +459,7 @@ $("a[name='apiSwitch']").powerSwitch({
 	classAdd: "zxx_api_on",
 	animation: "visibility",
 	onSwitch: function(target) {
-		location.replace(this.href);
+		location.hash = this.getAttribute("href");
 		// IE6 宽度
 		if (!window.XMLHttpRequest) {
 			target.css("width", $(window).width() - 254);	
