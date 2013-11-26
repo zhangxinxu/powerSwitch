@@ -415,6 +415,10 @@
 		// 切换的核心，所有的切换都要走这一步
 		// 面向切换面板元素设计的切换方法
 		var funSwitchable = function(indexWill) {
+			// 判断是否需要切换
+			if(indexWill == indexSelected){
+				return;
+			}
 			// 总的切换项目数，每次切换的项目数
 			var eleWillRelative = eleRelatives.slice(indexWill, indexWill + numSwitch);			
 			var eleSelected = null, eleWillSelect = null, eleRelative = null;
