@@ -450,10 +450,9 @@
 					$.powerSwitch.animation(null, eleWillRelative, params);
 					// 回调
 					params.onSwitch.call(this, eleWillRelative);
-				} else {						
-					// 1 vs 1 或者 1 vs many情况下
+				} else if (indexSelected !== indexWill) {						
+					// 1 vs 1
 					// 关心按钮选中与不选中的样子
-					// console.log([indexWill, indexSelected].join());
 					eleWillSelect = self.eq(indexWill);
 					if (indexSelected >= 0) {
 						eleSelected = self.eq(indexSelected);
@@ -466,7 +465,7 @@
 					// 触发元素的类名状态改变
 					eleWillSelect.addClass(params.classAdd).removeClass(params.classRemove);
 					// 已选元素的改变
-					if (indexSelected !== indexWill) eleSelected.addClass(params.classRemove).removeClass(params.classAdd);
+					eleSelected.addClass(params.classRemove).removeClass(params.classAdd);
 					// 对应元素的显隐控制
 					$.powerSwitch.animation(eleRelative, eleWillRelative, params);
 					// 回调
