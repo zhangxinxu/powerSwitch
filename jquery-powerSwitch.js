@@ -569,7 +569,10 @@
 					params.prevOrNext = $(this);
 					// 点击事件 click events
 					funSwitchable.call(this, index);
-					return false;
+					
+					if (this.id !== $(this).attr(params.attribute)) {
+						return false;
+					}
 				});
 				
 				if (anchorSplit && element.href && anchorSplit == element.href.split("#")[1]) {
