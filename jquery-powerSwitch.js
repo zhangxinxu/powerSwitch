@@ -570,7 +570,7 @@
 					// 点击事件 click events
 					funSwitchable.call(this, index);
 					// 如果不是指向自身，或者带有href属性，阻止默认行为
-					if (this.id !== $(this).attr(params.attribute) || (element && element.href)) {
+					if (this.id !== $(this).attr(params.attribute) && (element && element.href)) {
 						return false;
 					}
 				});
