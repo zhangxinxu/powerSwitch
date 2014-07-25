@@ -569,14 +569,10 @@
 					params.prevOrNext = $(this);
 					// 点击事件 click events
 					funSwitchable.call(this, index);
-<<<<<<< HEAD
-					if (element && element.href) return false;
-=======
-					
-					if (this.id !== $(this).attr(params.attribute)) {
+					// 如果不是指向自身，或者带有href属性，阻止默认行为
+					if (this.id !== $(this).attr(params.attribute) || (element && element.href)) {
 						return false;
 					}
->>>>>>> origin/master
 				});
 				
 				if (anchorSplit && element.href && anchorSplit == element.href.split("#")[1]) {
