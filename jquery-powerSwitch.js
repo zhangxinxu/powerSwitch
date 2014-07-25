@@ -541,7 +541,7 @@
 						index? funPlayNext(this): funPlayPrev(this);
 						elePrevOrNext = $(this);
 					}
-					return false;
+					if (element && element.href) return false;
 				});
 			} else if (isOneToMore == true) {
 				$(element).bind("click", function() {
@@ -561,7 +561,7 @@
 							$(this).addClass(params.classDisabled).attr("disabled", "disabled").removeAttr("title");		
 						}
 					}
-					return false;
+					if (element && element.href) return false;
 				});
 			} else if (params.eventType == "click") {				
 				$(element).bind("click", function() {
@@ -569,7 +569,7 @@
 					params.prevOrNext = $(this);
 					// 点击事件 click events
 					funSwitchable.call(this, index);
-					return false;
+					if (element && element.href) return false;
 				});
 				
 				if (anchorSplit && element.href && anchorSplit == element.href.split("#")[1]) {
