@@ -671,17 +671,20 @@
 				// 自定义按钮容器，选项卡，以及切换面板鼠标经过停止自动播放
 				// 如果容器存在，且是包含关系
 				// 只要绑定容器就可以
-				var arrHoverPlay = [self, eleRelatives, params.container];
-				if (isMoreToOne == true || (document.body.contains && params.container && params.container.get(0).contains(eleRelatives.get(0)))) {
-					arrHoverPlay = [self, params.container];
+				if (params.hoverStop !== false) {
+					var arrHoverPlay = [self, eleRelatives, params.container];
+					if (isMoreToOne == true || (document.body.contains && params.container && params.container.get(0).contains(eleRelatives.get(0)))) {
+						arrHoverPlay = [self, params.container];
+					}
+					$.each(arrHoverPlay, function(index, hoverTarget) {
+						if (hoverTarget) hoverTarget.hover(function(event) {
+							if (event.pageX !== undefined || params.eventType == "click") clearTimeout(autoPlayTimer);
+						}, function(event) {
+							if (event.pageX !== undefined || params.eventType == "click") funAutoPlay();
+						});						
+					});
 				}
-				$.each(arrHoverPlay, function(index, hoverTarget) {
-					if (hoverTarget) hoverTarget.hover(function(event) {
-						if (event.pageX !== undefined || params.eventType == "click") clearTimeout(autoPlayTimer);
-					}, function(event) {
-						if (event.pageX !== undefined || params.eventType == "click") funAutoPlay();
-					});						
-				});
+				
 				funAutoPlay.flagAutoPlay = true;
 				funAutoPlay();
 			}

@@ -145,7 +145,7 @@
                             <li id="tabAutoPlay2" class="tabpanel_abs" style="display:none;"><img src="img/mm3.jpg"></li>
                         </ul>
                     </div>
-                    <p class="mt10 mb10 explain">两张图，自动播，可暂停。<code>translate</code>类型动画。还带小翅膀哦！</p>
+                    <p class="mt10 mb10 explain">两张图，自动播（鼠标hover不停止），可暂停。<code>translate</code>类型动画。还带小翅膀哦！</p>
                     <div class="zxx_code">
                     	<h6 class="f9 mb10">HTML代码：</h6>
                     	<xmp><!-- <div id="tabAutoOperate" class="tab_auto_play"></div>
@@ -165,6 +165,7 @@
     animation: "translate",
     eventType: "hover",
     autoTime: 3000,
+    hoverStop: false,
     container: $("#tabAutoOperate")
 });</xmp>
 					</div>
@@ -641,6 +642,7 @@ $("#tabAutoTrigger a").powerSwitch({
 	classAdd: "tab_on",
 	animation: "translate",
 	eventType: "hover",
+	hoverStop: false,
 	autoTime: 3000,
 	container: $("#tabAutoOperate")
 });
