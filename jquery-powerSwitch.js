@@ -683,6 +683,7 @@
 						case "prev": {
 							params.prevOrNext = $(this);
 							funPlayPrev();
+							funAutoPlay();
 							break	
 						}
 						case "play": {
@@ -700,6 +701,7 @@
 						case "next": {
 							params.prevOrNext = $(this);
 							funPlayNext();
+							funAutoPlay();
 							break	
 						}
 					}
