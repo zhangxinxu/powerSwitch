@@ -683,26 +683,27 @@
 						case "prev": {
 							params.prevOrNext = $(this);
 							funPlayPrev();
-							funAutoPlay();
-							break	
+							if (params.autoTime) funAutoPlay();
+							break;	
 						}
 						case "play": {
 							funAutoPlay.flagAutoPlay = true;
 							$(this).attr("data-type", "pause").removeClass(classType).addClass(params.classPause);
+
 							funAutoPlay();
-							break	
+							break;	
 						}
 						case "pause": {
 							funAutoPlay.flagAutoPlay = false;
 							$(this).attr("data-type", "play").removeClass(classType).addClass(params.classPlay);
 							funAutoPlay();
-							break	
+							break;	
 						}
 						case "next": {
 							params.prevOrNext = $(this);
 							funPlayNext();
-							funAutoPlay();
-							break	
+							if (params.autoTime) funAutoPlay();
+							break;	
 						}
 					}
 					
